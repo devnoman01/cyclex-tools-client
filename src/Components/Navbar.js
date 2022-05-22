@@ -48,13 +48,15 @@ const Navbar = () => {
                     My Portfolio
                   </Link>
                 </li>
+
+                {/* {user && ( */}
                 <li>
-                  {user && (
-                    <Link to="/dashboard" className="font-medium">
-                      Dashboard
-                    </Link>
-                  )}
+                  <Link to="/dashboard" className="font-medium">
+                    Dashboard
+                  </Link>
                 </li>
+                {/* )} */}
+
                 <li>
                   {user && <p className="underline mr-1">{user.displayName}</p>}
                 </li>
@@ -83,7 +85,7 @@ const Navbar = () => {
               <img className="w-56 h-auto" src={logo} alt="" />
             </Link>
           </div>
-          <div className="navbar hidden lg:flex">
+          <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
               <li>
                 <Link to="/" className="font-medium">
@@ -100,13 +102,13 @@ const Navbar = () => {
                   My Portfolio
                 </Link>
               </li>
+              {/* {user && ( */}
               <li>
-                {user && (
-                  <Link to="/dashboard" className="font-medium">
-                    Dashboard
-                  </Link>
-                )}
+                <Link to="/dashboard" className="font-medium">
+                  Dashboard
+                </Link>
               </li>
+              {/* )} */}
               <li>
                 {user && <p className="underline mr-1">{user.displayName}</p>}
               </li>

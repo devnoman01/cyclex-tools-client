@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -12,6 +12,10 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
   const {
     register,
     formState: { errors },
@@ -24,6 +28,21 @@ const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   let loginError;
+
+  useEffect(() => {
+    if (user || gUser) {
+      Swal.fire({
+        title: "Login Successful",
+        html: `Welcome to your profile ${user.user.displayName}`,
+        timer: 3000,
+        timerProgressBar: false,
+        icon: "success",
+        showConfirmButton: false,
+      });
+      navigate(from, { replace: true });
+      console.log(user);
+    }
+  }, [user, gUser, from, navigate]);
 
   if (loading || gLoading) {
     return <Loading />;
@@ -38,13 +57,6 @@ const Login = () => {
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
     if (user) {
-      Swal.fire({
-        title: "Login Successful",
-        html: `Welcome to your profile ${user.user.displayName}`,
-        icon: "success",
-        showConfirmButton: false,
-      });
-      navigate("/");
     }
   };
 

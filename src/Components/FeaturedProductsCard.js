@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedProductsCard = ({ part }) => {
-  const { name, img, description, price, minimumOrderQty, availableQty } = part;
+  const navigate = useNavigate();
+
+  const { _id, name, img, description, price, minimumOrderQty, availableQty } =
+    part;
+
+  const handleOrder = () => {
+    navigate(`/purchase/${_id}`);
+  };
 
   return (
     <div className="card bg-base-100 border shadow-md">
@@ -18,7 +26,10 @@ const FeaturedProductsCard = ({ part }) => {
           <span className="text-sm">/per unit</span>
         </p>
         <div className="card-actions justify-center">
-          <button className="btn btn-sm bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white">
+          <button
+            onClick={handleOrder}
+            className="btn btn-sm bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+          >
             Order Now
           </button>
         </div>
