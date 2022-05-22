@@ -1,0 +1,25 @@
+[debug] [2022-05-22T16:29:27.936Z] ----------------------------------------------------------------------
+[debug] [2022-05-22T16:29:27.939Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Noman\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-05-22T16:29:27.940Z] CLI Version:   10.6.0
+[debug] [2022-05-22T16:29:27.940Z] Platform:      win32
+[debug] [2022-05-22T16:29:27.941Z] Node Version:  v16.13.1
+[debug] [2022-05-22T16:29:27.958Z] Time:          Sun May 22 2022 22:29:27 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-05-22T16:29:27.959Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-22T16:29:27.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-22T16:29:27.976Z] > authorizing via signed-in user (devnoman01@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Web\Projects\manufacturer-portal\manufacturer-portal-client
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
