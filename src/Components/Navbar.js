@@ -118,7 +118,7 @@ const Navbar = () => {
                     onClick={() => {
                       signOut(auth);
                     }}
-                    className="btn btn-active"
+                    className="btn btn-active bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
                   >
                     Sign Out
                   </button>
