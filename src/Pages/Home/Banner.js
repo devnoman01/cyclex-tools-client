@@ -8,9 +8,10 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div class="hero bg-base-100">
-      <div class="hero-content md:my-10 lg:my-12 flex-col lg:flex-row">
-        <div>
+    // <div className="bg-[#F7FBFC] border-b border-gray-100 w-full">
+    <div class="hero max-w-6xl mx-auto">
+      <div class="hero-content container mx-auto pt-10 pb-0 md:py-10 lg:py-12 flex-col lg:flex-row">
+        <div className="w-full md:w-1/2">
           <h1 class="text-4xl lg:text-5xl font-bold">
             We manufacture world class car parts and components
           </h1>
@@ -26,10 +27,10 @@ const Banner = () => {
             Order Now
           </Link>
         </div>
-        <div class="carousel w-full my-20">
+        <div class="carousel w-full row md:w-1/2 my-20">
           <div id="slide1" class="carousel-item relative w-full">
             <div>
-              <img src={shocks} class="w-xs" />
+              <img src={shocks} class="w-full" />
               <p className="text-center text-xl font-medium mt-0">
                 Shocks and Struts
               </p>
@@ -138,6 +139,7 @@ const Banner = () => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

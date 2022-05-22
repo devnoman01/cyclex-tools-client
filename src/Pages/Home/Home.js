@@ -1,13 +1,15 @@
 import React from "react";
+import Footer from "../../Components/Footer";
 import Banner from "./Banner";
+import LatestProducts from "./LatestProducts";
 
 const Home = () => {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="container mx-auto">
-        <Banner />
-      </div>
-    </div>
+    <>
+      <Banner />
+      <LatestProducts />
+      <Footer />
+    </>
   );
 };
 
