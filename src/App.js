@@ -14,34 +14,35 @@ import Purchase from "./Pages/Purchase/Purchase";
 function App() {
   return (
     <div>
-      <Navbar />
-      <Routes>
-        {/* open routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/myPortfolio" element={<MyPortfolio />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
+      <Navbar>
+        <Routes>
+          {/* open routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/myPortfolio" element={<MyPortfolio />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
 
-        {/* protected routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <RequireAuth>
-              <Dashboard />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/purchase/:id"
-          element={
-            <RequireAuth>
-              <Purchase />
-            </RequireAuth>
-          }
-        />
-      </Routes>
+          {/* protected routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/purchase/:id"
+            element={
+              <RequireAuth>
+                <Purchase />
+              </RequireAuth>
+            }
+          />
+        </Routes>
+      </Navbar>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const FeaturedProductsCard = ({ part }) => {
+const FeaturedProductsCard = ({ product }) => {
   const navigate = useNavigate();
 
   const { _id, name, img, description, price, minimumOrderQty, availableQty } =
-    part;
+    product;
 
   const handleOrder = () => {
     navigate(`/purchase/${_id}`);

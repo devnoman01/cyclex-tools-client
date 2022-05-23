@@ -4,23 +4,18 @@ import FeaturedProductsCard from "../../Components/FeaturedProductsCard";
 import Loading from "../../Components/Loading";
 
 const LatestProducts = () => {
-  // const [parts, setParts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const { data: parts, isLoading } = useQuery("parts", () =>
-    fetch("http://localhost:5000/parts", {
+  useEffect(() => {
+    fetch("http://localhost:5000/products", {
       method: "GET",
-    }).then((res) => res.json())
-  );
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  // console.log(data);
-  // useEffect(() => {
-  //   fetch("parts.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setParts(data));
-  // }, []);
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setProducts(data);
+      });
+  });
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -29,8 +24,8 @@ const LatestProducts = () => {
           Latest Products
         </h1>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {parts.map((part) => (
-            <FeaturedProductsCard key={part._id} part={part} />
+          {products.map((product) => (
+            <FeaturedProductsCard key={product._id} product={product} />
           ))}
         </div>
       </div>

@@ -5,46 +5,46 @@
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
         "minimumOrderQty": 20,
         "availableQty": 50,
-        "price": 500
+        "price": 100
     },
     {
         "name": "This is Card Title 2",
         "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 500
+        "minimumOrderQty": 30,
+        "availableQty": 60,
+        "price": 150
     },
     {
         "name": "This is Card Title 3",
         "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 500
+        "minimumOrderQty": 45,
+        "availableQty": 70,
+        "price": 200
     },
     {
         "name": "This is Card Title 4",
         "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 500
+        "minimumOrderQty": 40,
+        "availableQty": 80,
+        "price": 250
     },
     {
         "name": "This is Card Title 5",
         "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 500
+        "minimumOrderQty": 45,
+        "availableQty": 90,
+        "price": 300
     },
     {
         "name": "This is Card Title 6",
         "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
         "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 500
+        "minimumOrderQty": 50,
+        "availableQty": 95,
+        "price": 350
     }
 ]

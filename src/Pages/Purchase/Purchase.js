@@ -3,12 +3,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import Footer from "../../Components/Footer";
 import Loading from "../../Components/Loading";
 import auth from "../../firebase.init";
 
 const Purchase = () => {
   const [billAmount, setBillAmount] = useState(0);
+  const [orderButtonStatus, setOrderButtonStatus] = useState(true);
   const [itemQuantity, setItemQuantity] = useState(0);
   const [item, setItem] = useState([]);
   const [quantityError, setQuantityError] = useState("");
@@ -44,27 +46,55 @@ const Purchase = () => {
       const addValue = parseInt(quantity * rate);
       setBillAmount(addValue);
       setQuantityError("");
+      setOrderButtonStatus(true);
     } else {
+      setOrderButtonStatus(false);
       setBillAmount(0);
       setQuantityError("Enter valid quantity");
     }
   };
 
-  const handlePurchaseSubmit = (e) => {
+  const handlePlaceOrder = (e) => {
     e.preventDefault();
     const order = {
       buyerAddress: e.target.address.value,
       buyerEmail: user.email,
       isPaid: false,
       buyerName: user.displayName,
-      orderQty: parseInt(e.target.orderQty.value),
+      orderQty: itemQuantity,
       billAmount: billAmount,
       buyerPhone: e.target.phone.value,
       productId: item._id,
       productName: item.name,
       rate: item.price,
     };
-    console.log(order);
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Order Place Successful",
+            html: `Your ordered ${itemQuantity} ${item.name}`,
+            timer: 4000,
+            // timerProgressBar: false,
+            icon: "success",
+            showConfirmButton: false,
+          });
+        } else {
+          Swal.fire({
+            title: "Something Wrong",
+            html: "Order place failed. Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+          });
+        }
+      });
   };
 
   return (
@@ -72,12 +102,12 @@ const Purchase = () => {
       <div className="max-w-6xl mx-auto">
         <div className="container mx-auto pt-6 pb-14 px-4">
           <h1 className="text-4xl font-medium text-center mb-8">
-            Confirm Purchase
+            Purchase Product
           </h1>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-2 sm:p-4">
               <div className="card bg-base-100 shadow-md border pt-5">
-                <h1 className="text-3xl text-center">Item Details</h1>
+                <h1 className="text-3xl text-center">Product Details</h1>
                 <figure className="px-6 pt-6">
                   <img src={item.img} alt="Shoes" className="rounded-xl" />
                 </figure>
@@ -117,7 +147,7 @@ const Purchase = () => {
               <div className="card bg-base-100 shadow-md border pt-5">
                 <h1 className="text-3xl text-center">User Information</h1>
                 <form
-                  onSubmit={handlePurchaseSubmit}
+                  onSubmit={handlePlaceOrder}
                   className="mx-auto w-full p-4"
                 >
                   <div className="form-control w-full">
@@ -194,9 +224,14 @@ const Purchase = () => {
                     <span className="font-medium">${billAmount}</span>
                   </h3>
                   <input
+                    disabled={!orderButtonStatus}
                     type="submit"
-                    value="Purchase"
-                    className="btn w-full bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                    value="Place Order"
+                    className={`${
+                      orderButtonStatus
+                        ? "btn w-full bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                        : "btn btn-disabled w-full"
+                    }`}
                   />
                 </form>
               </div>
