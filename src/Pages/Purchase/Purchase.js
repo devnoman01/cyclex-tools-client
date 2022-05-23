@@ -57,16 +57,16 @@ const Purchase = () => {
   const handlePlaceOrder = (e) => {
     e.preventDefault();
     const order = {
-      buyerAddress: e.target.address.value,
-      buyerEmail: user.email,
-      isPaid: false,
-      buyerName: user.displayName,
-      orderQty: itemQuantity,
       billAmount: billAmount,
-      buyerPhone: e.target.phone.value,
+      isPaid: false,
+      orderQty: itemQuantity,
       productId: item._id,
       productName: item.name,
       rate: item.price,
+      userAddress: e.target.address.value,
+      userEmail: user.email,
+      userName: user.displayName,
+      userPhone: e.target.phone.value,
     };
     fetch("http://localhost:5000/order", {
       method: "POST",
@@ -198,8 +198,11 @@ const Purchase = () => {
                   <div className="form-control w-full">
                     <label className="label">
                       <span className="label-text">
-                        Order Quantity (min:{item.minimumOrderQty} max:
-                        {item.availableQty} )
+                        Order Quantity{" "}
+                        <span className="font-medium text-secondary">
+                          (min:{item.minimumOrderQty} max:
+                          {item.availableQty} )
+                        </span>
                       </span>
                     </label>
                     <input

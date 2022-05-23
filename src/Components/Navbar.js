@@ -87,7 +87,7 @@ const Navbar = ({ children }) => {
                       <li>
                         <Link
                           to="/dashboard"
-                          className="font-medium rounded-md"
+                          className="font-medium rounded-md mr-1"
                         >
                           Dashboard
                         </Link>
@@ -95,9 +95,12 @@ const Navbar = ({ children }) => {
                     )}
                     {user && (
                       <li>
-                        <p className="underline mr-1">{user.displayName}</p>
+                        <p className="underline bg-blue-100 rounded-md mr-1">
+                          {user.displayName}
+                        </p>
                       </li>
                     )}
+
                     {user ? (
                       <li>
                         <button
@@ -105,12 +108,17 @@ const Navbar = ({ children }) => {
                             signOut(auth);
                           }}
                           className={`${
-                            user ? "hidden" : "block"
+                            user ? "block" : ""
                           } btn btn-active rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white`}
                         >
                           Sign Out
                         </button>
                       </li>
+                    ) : (
+                      <></>
+                    )}
+                    {user ? (
+                      <></>
                     ) : (
                       <li>
                         <Link
@@ -159,17 +167,20 @@ const Navbar = ({ children }) => {
                   </li>
                 )}
 
-                {user ? (
+                {user && (
                   <li>
                     <button
                       onClick={() => {
                         signOut(auth);
                       }}
-                      className="btn w-36 btn-active btn-sm"
+                      className="btn w-36 bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
                     >
                       Sign Out
                     </button>
                   </li>
+                )}
+                {user ? (
+                  <></>
                 ) : (
                   <li>
                     <Link
