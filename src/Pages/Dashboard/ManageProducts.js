@@ -19,20 +19,21 @@ const ManageProducts = () => {
       <h3 className="text-2xl my-3">Manage Products</h3>
       <div>
         <div className="overflow-x-auto">
-          <table className="table table-compact w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Product</th>
-                <th>Price Rate</th>
-                <th>Quantity</th>
-                <th>Bill Amount</th>
-                <th>Payment</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Min. Order</th>
+                <th>Stock</th>
+                <th>Manage</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((order, index) => (
-                <ProductRow key={order._id} order={order} index={index} />
+              {products.map((product, index) => (
+                <ProductRow key={product._id} product={product} index={index} />
               ))}
             </tbody>
           </table>
