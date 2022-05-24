@@ -33,6 +33,14 @@ function App() {
 
           {/* protected routes */}
           <Route
+            path="/purchase/:id"
+            element={
+              <RequireAuth>
+                <Purchase />
+              </RequireAuth>
+            }
+          />
+          <Route
             path="/dashboard"
             element={
               <RequireAuth>
