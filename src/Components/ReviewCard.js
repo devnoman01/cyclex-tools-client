@@ -8,15 +8,19 @@ const ReviewCard = ({ review }) => {
   return (
     <div className="w-full border rounded-lg shadow-md px-4 py-6">
       <div className="flex items-center gap-3 mb-5">
-        <div class="avatar">
-          <div class="w-10 rounded-full ring ring-blue-400 ring-offset-base-100 ring-offset-2">
+        {/* User image */}
+        <div className="avatar">
+          <div className="w-10 rounded-full ring ring-blue-400 ring-offset-base-100 ring-offset-2">
             <img src="https://api.lorem.space/image/face?hash=3174" />
           </div>
         </div>
         <h4 className="text-lg font-medium">{userName}</h4>
       </div>
       <div>
+        {/* User name */}
         <p className="text-justify mb-4">{reviewText}</p>
+
+        {/* Rating stat icon */}
         <span className="font-medium">
           Rating:
           <Rating
