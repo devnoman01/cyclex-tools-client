@@ -38,9 +38,9 @@ const OrderRow = ({ order, index }) => {
       <td>{billAmount}</td>
       <td>
         {isPaid ? (
-          <p className="text-lg font-medium text-green-600">Paid</p>
+          <p className="text-md font-semibold text-green-700">Paid</p>
         ) : (
-          <button className="btn btn-sm font-medium border-2 border-green-600 bg-green-200 text-black">
+          <button className="btn btn-xs font-medium border-2 border-green-600 bg-green-200 text-black">
             Pay Now
           </button>
         )}
@@ -51,7 +51,7 @@ const OrderRow = ({ order, index }) => {
         ) : (
           <button
             onClick={handleCancelOrder}
-            className="btn btn-sm border-2 border-red-600 bg-red-200 text-black"
+            className="btn btn-xs border-2 border-red-600 bg-red-200 text-black"
           >
             <FontAwesomeIcon className="footer-icon mr-1" icon={faXmark} />
             Cancel
