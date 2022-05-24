@@ -3,7 +3,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 
-const ProductRow = ({ product, index }) => {
+const ProductRow = ({ product, index, refetch }) => {
   const { _id, name, img, minimumOrderQty, availableQty, price } = product;
 
   const handleDeleteProduct = (e) => {
@@ -18,12 +18,20 @@ const ProductRow = ({ product, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Product Deleted!",
-          html: "Product has been deleted.",
-          icon: "success",
-          showConfirmButton: false,
-        });
+        fetch(`http://localhost:5000/products/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            refetch();
+            Swal.fire({
+              title: "Product Deleted!",
+              html: "Product has been deleted.",
+              icon: "success",
+              showConfirmButton: false,
+            });
+          });
       }
     });
   };

@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../../Components/Loading";
 import ProductRow from "../../Components/ProductRow";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
+  const { data, isLoading, refetch } = useQuery(["products", products], () =>
     fetch("http://localhost:5000/products", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-      });
-  }, [products]);
+      })
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/products", {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //     });
+  // }, [products]);
 
   return (
     <div>
@@ -33,7 +49,12 @@ const ManageProducts = () => {
             </thead>
             <tbody>
               {products.map((product, index) => (
-                <ProductRow key={product._id} product={product} index={index} />
+                <ProductRow
+                  key={product._id}
+                  product={product}
+                  index={index}
+                  refetch={refetch}
+                />
               ))}
             </tbody>
           </table>
