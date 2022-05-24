@@ -61,7 +61,7 @@ const AddReview = () => {
       <div>
         <form
           onSubmit={handleReviewSubmit}
-          className="border-2 bg-slate-50 rounded-lg p-3 w-full max-w-sm mt-8"
+          className="border-2 bg-slate-50 rounded-lg p-3 w-full mt-8"
         >
           <h4 className="text-lg font-medium text-center">Review Form</h4>
           <div className="form-control w-full">
@@ -113,7 +113,6 @@ const AddReview = () => {
                 value={2}
                 name="rating-2"
                 className="mask mask-star-2 bg-blue-600"
-                defaultChecked
               />
               <input
                 type="radio"

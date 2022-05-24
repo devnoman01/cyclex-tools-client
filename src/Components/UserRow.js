@@ -1,10 +1,15 @@
 import React from "react";
 
-const ProductRow = ({ product, index }) => {
-  const { _id, name, img, minimumOrderQty, availableQty, price } = product;
+const UserRow = ({ product, index }) => {
+  // const { _id, name, img, minimumOrderQty, availableQty, price } = product;
   return (
     <tr className="hover">
-      <td>{index + 1}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      {/* <td>{index + 1}</td>
       <td>
         <div className="avatar">
           <div className="w-12 rounded">
@@ -18,9 +23,9 @@ const ProductRow = ({ product, index }) => {
       <td>{availableQty}</td>
       <td>
         <button className="btn btn-sm ">Manage</button>
-      </td>
+      </td> */}
     </tr>
   );
 };
 
-export default ProductRow;
+export default UserRow;

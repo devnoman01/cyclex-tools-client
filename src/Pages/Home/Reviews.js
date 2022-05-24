@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Loading from "../../Components/Loading";
 import ReviewCard from "../../Components/ReviewCard";
 
 const Reviews = () => {
