@@ -5,7 +5,7 @@ const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allProducts", {
+    fetch("http://localhost:5000/products", {
       method: "GET",
     })
       .then((res) => res.json())

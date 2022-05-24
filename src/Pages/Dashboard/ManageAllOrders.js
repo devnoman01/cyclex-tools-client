@@ -5,7 +5,7 @@ const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/paidOrders`, {
+    fetch(`http://localhost:5000/order`, {
       method: "GET",
     })
       .then((res) => res.json())

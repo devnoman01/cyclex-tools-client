@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../../Components/Loading";
 import OrderRow from "../../Components/OrderRow";
 import auth from "../../firebase.init";
 
@@ -9,14 +10,20 @@ const MyOrders = () => {
   const [userOrders, setUserOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order?user=${user.email}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserOrders(data);
-      });
-  }, [user, userOrders]);
+    if (user) {
+      fetch(`http://localhost:5000/order?email=${user.email}`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setUserOrders(data);
+        });
+    }
+  }, [user]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>
