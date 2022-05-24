@@ -13,10 +13,10 @@ const FeaturedProductsCard = ({ product }) => {
 
   return (
     <div className="card bg-base-100 border shadow-md">
-      <figure className="p-5 border rounded-lg">
+      <figure className="p-5 rounded-lg">
         <img className="w-full" src={img} alt="Shoes" />
       </figure>
-      <div className="card-body">
+      <div className="card-body px-5">
         <h2 className="card-title mb-2">{name}</h2>
         <span className="text-sm text-justify mb-3">{description}</span>
         <span className="text-base">Minimum Order: {minimumOrderQty}</span>
