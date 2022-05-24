@@ -24,33 +24,34 @@ const AddReview = () => {
       };
 
       console.log(review);
-      //   fetch("http://localhost:5000/review", {
-      //     method: "POST",
-      //     headers: {
-      //       "content-type": "application/json",
-      //     },
-      //     body: JSON.stringify(review),
-      //   })
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       if (data.insertedId) {
-      //         Swal.fire({
-      //           title: "Review Submitted",
-      //           html: "Thanks for your review",
-      //           timer: 4000,
-      //           // timerProgressBar: false,
-      //           icon: "success",
-      //           showConfirmButton: false,
-      //         });
-      //       } else {
-      //         Swal.fire({
-      //           title: "Something Wrong",
-      //           html: "Please try again.",
-      //           icon: "error",
-      //           showConfirmButton: false,
-      //         });
-      //       }
-      //     });
+      fetch("http://localhost:5000/review", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(review),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              title: "Review Submitted",
+              html: "Thanks for your review",
+              timer: 4000,
+              // timerProgressBar: false,
+              icon: "success",
+              showConfirmButton: false,
+            });
+            e.target.review.value = "";
+          } else {
+            Swal.fire({
+              title: "Something Wrong",
+              html: "Please try again.",
+              icon: "error",
+              showConfirmButton: false,
+            });
+          }
+        });
     }
   };
 
@@ -112,13 +113,13 @@ const AddReview = () => {
                 value={2}
                 name="rating-2"
                 className="mask mask-star-2 bg-blue-600"
+                defaultChecked
               />
               <input
                 type="radio"
                 value={3}
                 name="rating-2"
                 className="mask mask-star-2 bg-blue-600"
-                defaultChecked
               />
               <input
                 type="radio"

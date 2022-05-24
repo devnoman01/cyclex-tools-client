@@ -15,7 +15,7 @@ const LatestProducts = () => {
         // console.log(data);
         setProducts(data);
       });
-  });
+  }, [products]);
 
   return (
     <div className="max-w-6xl mx-auto">
