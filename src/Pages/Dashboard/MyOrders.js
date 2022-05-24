@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import OrderRow from "../../Components/OrderRow";
-import useUser from "../../Hooks/useUser";
+import auth from "../../firebase.init";
 
 const MyOrders = () => {
-  const [user, loading, error] = useUser();
+  const [user, loading, error] = useAuthState(auth);
 
   const [userOrders, setUserOrders] = useState([]);
 
@@ -31,6 +32,7 @@ const MyOrders = () => {
                 <th>Quantity</th>
                 <th>Bill Amount</th>
                 <th>Payment</th>
+                <th>Cancel Order</th>
               </tr>
             </thead>
             <tbody>

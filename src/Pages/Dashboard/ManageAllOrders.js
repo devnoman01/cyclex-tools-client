@@ -18,17 +18,19 @@ const ManageAllOrders = () => {
     <div>
       <h3 className="text-2xl my-3">Manage All Orders</h3>
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full">
           <table className="table table-compact w-full">
             <thead>
               <tr>
                 <th>#</th>
                 <th>User</th>
                 <th>Product</th>
-                <th>Price Rate</th>
+                <th>Price</th>
                 <th>Quantity</th>
-                <th>Bill Amount</th>
+                <th>Amount</th>
                 <th>Payment</th>
+                <th>Cancel Order</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>

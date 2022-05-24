@@ -33,14 +33,13 @@ const Login = () => {
     if (user || gUser) {
       Swal.fire({
         title: "Login Successful",
-        html: `Welcome to your profile ${user.user.displayName}`,
+        html: "Welcome to your profile",
         timer: 3000,
         timerProgressBar: false,
         icon: "success",
         showConfirmButton: false,
       });
       navigate(from, { replace: true });
-      console.log(user);
     }
   }, [user, gUser, from, navigate]);
 

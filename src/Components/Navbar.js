@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
-import useUser from "../Hooks/useUser";
 
 const Navbar = ({ children }) => {
-  const [user, loading, error] = useUser();
+  const [user, loading, error] = useAuthState(auth);
+
   return (
     <div className="sticky top-0 z-50">
       <div className="w-full mx-auto bg-base-100 ">

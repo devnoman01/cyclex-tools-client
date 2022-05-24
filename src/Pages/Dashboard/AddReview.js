@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
-import useUser from "../../Hooks/useUser";
+import auth from "../../firebase.init";
 
 const AddReview = () => {
-  const [user, loading, error] = useUser();
+  const [user, loading, error] = useAuthState(auth);
   const [rating, setRating] = useState(0);
 
   const getRating = (e) => {

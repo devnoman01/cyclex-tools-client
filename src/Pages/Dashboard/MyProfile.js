@@ -8,10 +8,12 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import useUser from "../../Hooks/useUser";
+
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const MyProfile = () => {
-  const [user] = useUser();
+  const [user, loading, error] = useAuthState(auth);
   const [editable, setEditable] = useState(false);
 
   const name = user.displayName;
@@ -39,7 +41,8 @@ const MyProfile = () => {
           <div className="w-full h-full bg-slate-50 rounded-xl shadow-md px-4 py-10 lg:py-12 border text-center">
             <div className="avatar mb-6">
               <div className="w-3/5 mx-auto rounded-full ring ring-blue-300 ring-offset-2">
-                <img src="https://api.lorem.space/image/face?hash=3178" />
+                <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" />
+                {/* <img src="https://api.lorem.space/image/face?hash=3178" /> */}
               </div>
             </div>
 
@@ -91,6 +94,19 @@ const MyProfile = () => {
                 <h3 className="text-3xl text-center">Edit Profile</h3>
                 <div className="form-control w-full">
                   <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    readOnly
+                    disabled={!editable}
+                    type="email"
+                    placeholder=""
+                    defaultValue={email}
+                    className="input input-sm lg:input-md input-bordered w-full"
+                  />
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
                     <span className="label-text">Name</span>
                   </label>
                   <input
@@ -102,19 +118,7 @@ const MyProfile = () => {
                     className="input input-sm lg:input-md input-bordered w-full"
                   />
                 </div>
-                <div className="form-control w-full">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    required
-                    disabled={!editable}
-                    type="email"
-                    placeholder=""
-                    defaultValue={email}
-                    className="input input-sm lg:input-md input-bordered w-full"
-                  />
-                </div>
+
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text">Phone Number</span>
