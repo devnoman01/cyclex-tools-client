@@ -1,7 +1,33 @@
 import React from "react";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from "sweetalert2";
 
 const ProductRow = ({ product, index }) => {
   const { _id, name, img, minimumOrderQty, availableQty, price } = product;
+
+  const handleDeleteProduct = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Delete Product?",
+      text: `Are you sure to delete ${name}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#C82333",
+      cancelButtonColor: "#218838",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Product Deleted!",
+          html: "Product has been deleted.",
+          icon: "success",
+          showConfirmButton: false,
+        });
+      }
+    });
+  };
+
   return (
     <tr className="hover">
       <td>{index + 1}</td>
@@ -17,7 +43,10 @@ const ProductRow = ({ product, index }) => {
       <td>{minimumOrderQty}</td>
       <td>{availableQty}</td>
       <td>
-        <button className="btn btn-sm ">Manage</button>
+        <button onClick={handleDeleteProduct} className="btn btn-sm btn-error">
+          <FontAwesomeIcon className="footer-icon mr-2" icon={faTrashCan} />
+          Delete
+        </button>
       </td>
     </tr>
   );

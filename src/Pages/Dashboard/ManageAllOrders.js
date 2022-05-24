@@ -23,6 +23,7 @@ const ManageAllOrders = () => {
             <thead>
               <tr>
                 <th>#</th>
+                <th>User</th>
                 <th>Product</th>
                 <th>Price Rate</th>
                 <th>Quantity</th>

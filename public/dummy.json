@@ -1,50 +1,58 @@
 [
     {
-        "name": "This is Card Title 1",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 20,
-        "availableQty": 50,
-        "price": 100
-    },
-    {
-        "name": "This is Card Title 2",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
+        "name": "OIL FILTER",
+        "img": "https://i.ibb.co/pQr9kZ2/oil-filter.jpg",
+        "description": "Genuine factory made Oil Filter for production and replacement use designed to remove contaminants from oil based fuel such as diesel and petrol.",
         "minimumOrderQty": 30,
-        "availableQty": 60,
-        "price": 150
+        "availableQty": 500,
+        "price": 50
     },
     {
-        "name": "This is Card Title 3",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 45,
-        "availableQty": 70,
-        "price": 200
+        "name": "AIR FILTER",
+        "img": "https://i.ibb.co/Pjc15Nz/air-filter.jpg",
+        "description": "Genuine factory made Air Filter for production and replacement use designed to remove contaminants from intake air and keep your engine safe.",
+        "minimumOrderQty": 30,
+        "availableQty": 600,
+        "price": 120
     },
     {
-        "name": "This is Card Title 4",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 40,
-        "availableQty": 80,
+        "name": "BATTERY",
+        "img": "https://i.ibb.co/jyCbMcq/battery.jpg",
+        "description": "A battery is the most essential part of a car. Our factory made batteries are long lasting and used for production and replacement.",
+        "minimumOrderQty": 20,
+        "availableQty": 700,
+        "price": 500
+    },
+    {
+        "name": "BRAKE SHOE",
+        "img": "https://i.ibb.co/P9RCVDX/brake-shoe.jpg",
+        "description": "Our genuine factory made brake shoe is one of the best selling product in automobile industry according to sellers. As a seller you can it too.",
+        "minimumOrderQty": 30,
+        "availableQty": 800,
         "price": 250
     },
     {
-        "name": "This is Card Title 5",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 45,
-        "availableQty": 90,
-        "price": 300
+        "name": "BREAK PAD",
+        "img": "https://i.ibb.co/rw5T8c8/breakpad.jpg",
+        "description": "Our genuine factory made brake pads is one of the best selling product in automobile industry according to sellers. As a seller you can it too.",
+        "minimumOrderQty": 30,
+        "availableQty": 900,
+        "price": 150
     },
     {
-        "name": "This is Card Title 6",
-        "img": "https://i.ibb.co/7Ry2kd3/doctor.jpg",
-        "description": "Complete line of OE quality shock absorbers and strut assemblies, including conventional and intelligent technology products for passenger car, commercial truck, off-road and two-wheel applications.",
-        "minimumOrderQty": 50,
-        "availableQty": 95,
-        "price": 350
+        "name": "CAR TYRE",
+        "img": "https://i.ibb.co/QHpccQH/car-tyre.jpg",
+        "description": "Offers a new a reference for safety. After three years of development, this tyre provides a high level of performance on wet roads, from the first use until worn to the legal wear indicator (1.6mm).",
+        "minimumOrderQty": 16,
+        "availableQty": 300,
+        "price": 700
+    },
+    {
+        "name": "SUV TYRE",
+        "img": "https://i.ibb.co/KrMwpLW/suv-tyre.jpg",
+        "description": "Offers a new a reference for safety. After three years of development, this tyre provides a high level of performance on wet roads, from the first use until worn to the legal wear indicator (1.6mm).",
+        "minimumOrderQty": 16,
+        "availableQty": 300,
+        "price": 700
     }
 ]

@@ -7,7 +7,7 @@ const LatestProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products", {
+    fetch("http://localhost:5000/latestProducts", {
       method: "GET",
     })
       .then((res) => res.json())

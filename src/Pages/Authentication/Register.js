@@ -48,11 +48,11 @@ const Register = () => {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto">
-        <div className="container flex justify-center mx-auto px-4">
-          <div className="card mx-auto mt-16 md:mt-24 w-full md:max-w-sm bg-base-100 border border-gray-200 shadow-lg">
-            <div className="card-body items-center text-center">
-              <h2 className="text-2xl font-medium mb-4">Sign Up</h2>
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="container mx-auto px-4">
+          <div className="mt-16 md:mt-24 ">
+            <div className="p-8 border w-full max-w-sm border-gray-200 shadow-lg rounded-2xl mx-auto">
+              <h2 className="text-2xl font-medium text-center mb-4">Sign Up</h2>
               <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div className="form-control w-full">
                   <label className="label">

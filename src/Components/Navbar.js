@@ -96,7 +96,7 @@ const Navbar = ({ children }) => {
                     )}
                     {user && (
                       <li>
-                        <p className="underline bg-blue-100 rounded-md mr-1">
+                        <p className="underline bg-slate-50 rounded-md mr-1">
                           {user.displayName}
                         </p>
                       </li>

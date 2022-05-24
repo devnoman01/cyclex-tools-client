@@ -23,7 +23,6 @@ const AddReview = () => {
         rating: rating,
       };
 
-      console.log(review);
       fetch("http://localhost:5000/review", {
         method: "POST",
         headers: {
@@ -61,9 +60,9 @@ const AddReview = () => {
       <div>
         <form
           onSubmit={handleReviewSubmit}
-          className="border-2 bg-slate-50 rounded-lg p-3 w-full mt-8"
+          className="border-2 bg-slate-50 rounded-lg px-3 py-6 w-full mt-8 shadow-md"
         >
-          <h4 className="text-lg font-medium text-center">Review Form</h4>
+          <h4 className="text-3xl mb-3 font-medium text-center">Review Form</h4>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">User's Name</span>
@@ -79,16 +78,16 @@ const AddReview = () => {
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">
-                Review Texts (max 250 character)
+                Review Texts (max 200 character)
               </span>
             </label>
             <textarea
               required
               type="text"
               name="review"
-              maxLength="250"
+              maxLength="200"
               placeholder="Type review here"
-              className="textarea textarea-bordered h-32 w-full"
+              className="textarea textarea-bordered h-28 w-full"
             />
           </div>
           <div className="form-control w-full mt-3">
@@ -113,6 +112,7 @@ const AddReview = () => {
                 value={2}
                 name="rating-2"
                 className="mask mask-star-2 bg-blue-600"
+                defaultChecked
               />
               <input
                 type="radio"

@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl w-full mx-auto">
       <div className="container flex justify-center mx-auto px-4">
         <div className="card mx-auto mt-16 md:mt-24 w-full md:max-w-sm bg-base-100 border border-gray-200 shadow-lg">
           <div className="card-body items-center text-center">

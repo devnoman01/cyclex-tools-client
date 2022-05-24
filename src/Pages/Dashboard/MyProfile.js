@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { faEnvelope, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDribbble,
+  faFacebook,
+  faGithub,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import useUser from "../../Hooks/useUser";
 
 const MyProfile = () => {
@@ -36,9 +43,9 @@ const MyProfile = () => {
               </div>
             </div>
 
-            <h3 className="text-2xl mb-5">{name}</h3>
+            <h3 className="text-2xl mb-4">{name}</h3>
 
-            <p className="mb-4 flex justify-center items-center gap-3">
+            <p className="mb-3 flex justify-center items-center gap-3">
               <FontAwesomeIcon
                 style={{ fontSize: "20px" }}
                 className=""
@@ -51,11 +58,37 @@ const MyProfile = () => {
 
             <p className="text-sm">Shop-11, Road-1, New Market, Dhaka</p>
 
-            <p></p>
+            <div className="flex-row mt-6">
+              <a target="_blank" href="https://www.facebook.com/">
+                <FontAwesomeIcon
+                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  icon={faFacebook}
+                />
+              </a>
+              <a target="_blank" href="https://instagram.com/">
+                <FontAwesomeIcon
+                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  icon={faLinkedin}
+                />
+              </a>
+              <a target="_blank" href="https://twitter.com/">
+                <FontAwesomeIcon
+                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  icon={faTwitter}
+                />
+              </a>
+              <a target="_blank" href="https://github.com/">
+                <FontAwesomeIcon
+                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  icon={faGithub}
+                />
+              </a>
+            </div>
           </div>
           <div className="col md:col-span-2">
-            <div className="w-full bg-slate-50 rounded-xl shadow-md border px-4 py-10 lg:py-12">
+            <div className="w-full bg-slate-50 rounded-xl shadow-md border px-4 pb-10 pt-5">
               <form onSubmit={handleUpdateProfile} className="bg-transparent">
+                <h3 className="text-3xl text-center">Edit Profile</h3>
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text">Name</span>

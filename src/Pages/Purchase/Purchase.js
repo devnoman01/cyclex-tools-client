@@ -59,6 +59,7 @@ const Purchase = () => {
     const order = {
       billAmount: billAmount,
       isPaid: false,
+      isShipped: false,
       orderQty: itemQuantity,
       productId: item._id,
       productName: item.name,
