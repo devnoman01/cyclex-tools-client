@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   // using react query to get all orders
-  const { data, isLoading, refetch } = useQuery(["order"], () =>
+  const { data, isLoading, refetch } = useQuery("order", () =>
     fetch("http://localhost:5000/allOrders", {
       method: "GET",
     })

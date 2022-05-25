@@ -28,19 +28,7 @@ const Login = () => {
 
   let loginError;
 
-  useEffect(() => {
-    if (user) {
-      Swal.fire({
-        title: "Login Successful",
-        html: "Welcome to your profile",
-        timer: 3000,
-        timerProgressBar: false,
-        icon: "success",
-        showConfirmButton: false,
-      });
-      navigate(from, { replace: true });
-    }
-  }, [user, from, navigate]);
+  useEffect(() => {}, []);
 
   if (loading) {
     return <Loading />;
@@ -48,6 +36,17 @@ const Login = () => {
 
   if (error) {
     loginError = <p className="text-red-600">{error?.message}</p>;
+  }
+  if (user) {
+    Swal.fire({
+      title: "Login Successful",
+      html: "Welcome to your profile",
+      timer: 3000,
+      timerProgressBar: false,
+      icon: "success",
+      showConfirmButton: false,
+    });
+    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {

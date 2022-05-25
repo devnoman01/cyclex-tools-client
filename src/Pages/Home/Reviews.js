@@ -13,7 +13,7 @@ const Reviews = () => {
         // console.log(data);
         setReviews(data);
       });
-  }, [reviews]);
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto">

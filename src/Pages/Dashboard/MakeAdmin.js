@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import UserRow from "../../Components/UserRow";
 
 const MakeAdmin = () => {
+  const [users, setUsers] = useState([]);
+
+  // using react query to get all orders
+  const { data, isLoading, refetch } = useQuery("user", () =>
+    fetch("http://localhost:5000/allUser", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+  );
+
   return (
     <div>
       <h3 className="text-2xl my-3">Manage User</h3>
@@ -10,23 +25,21 @@ const MakeAdmin = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Image</th>
+                <th>Photo</th>
+                <th>Email</th>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Min. Order</th>
-                <th>Stock</th>
                 <th>Manage</th>
               </tr>
             </thead>
             <tbody>
-              {/* {products.map((product, index) => (
-                <ProductRow
-                  key={product._id}
-                  product={product}
+              {users.map((user, index) => (
+                <UserRow
+                  key={user._id}
+                  user={user}
                   index={index}
                   refetch={refetch}
                 />
-              ))} */}
+              ))}
             </tbody>
           </table>
         </div>

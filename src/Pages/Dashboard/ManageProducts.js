@@ -7,7 +7,7 @@ const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
   // using react query to get all products
-  const { data, isLoading, refetch } = useQuery(["products", products], () =>
+  const { data, isLoading, refetch } = useQuery("products", () =>
     fetch("http://localhost:5000/products", {
       method: "GET",
     })
@@ -35,7 +35,7 @@ const ManageProducts = () => {
                 <th>Price</th>
                 <th>Min. Order</th>
                 <th>Stock</th>
-                <th>Manage</th>
+                <th className="pr-16 lg:pr-0">Manage</th>
               </tr>
             </thead>
             <tbody>

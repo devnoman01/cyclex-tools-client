@@ -10,12 +10,11 @@ import auth from "../../firebase.init";
 import Loading from "../../Components/Loading";
 import Footer from "../../Components/Footer";
 import Swal from "sweetalert2";
-import useAuthUser from "../../Hooks/useAuthUser";
 import SocialLogin from "./SocialLogin";
 import useToken from "../../Hooks/useToken";
 
 const Register = () => {
-  const [displayName, setDisplayName] = useState("");
+  // const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -77,7 +76,13 @@ const Register = () => {
   useEffect(() => {
     if (user) {
     }
-  });
+  }, []);
+
+  let signInError;
+
+  if (loading || updating) {
+    return <Loading />;
+  }
 
   if (token) {
     navigate("/");
@@ -97,10 +102,8 @@ const Register = () => {
     });
   }
 
-  let signInError;
-
-  if (loading || updating) {
-    return <Loading />;
+  if (user) {
+    // console.log(user.displayName);
   }
 
   if (error || updateError) {

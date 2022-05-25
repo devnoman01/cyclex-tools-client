@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
+import { useQuery } from "react-query";
 
 const Navbar = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
+  // console.log(user);
+  const [currentUser, setCurrentUser] = useState({});
+
+  // const { data, isLoading, refetch } = useQuery("user", () =>
+  //   fetch(`http://localhost:5000/user?email=${user.email}`, {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCurrentUser(data[0]);
+  //       console.log(data[0]);
+  //     })
+  // );
 
   return (
     <div className="sticky top-0 z-50">

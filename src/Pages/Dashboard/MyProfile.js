@@ -11,17 +11,35 @@ import {
 
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import Loading from "../../Components/Loading";
 
 const MyProfile = () => {
   const [user, loading, error] = useAuthState(auth);
   const [editable, setEditable] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
-  const name = user.displayName;
-  const email = user.email;
+  const { data, isLoading, refetch } = useQuery(["user", user], () =>
+    fetch(`http://localhost:5000/user?email=${user.email}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrentUser(data[0]);
+      })
+  );
+
+  let name = null;
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  const email = currentUser.email;
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
     setEditable(!editable);
+    // refetch();
   };
 
   return (
@@ -40,13 +58,13 @@ const MyProfile = () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
           <div className="w-full h-full bg-slate-50 rounded-xl shadow-md px-4 py-10 lg:py-12 border text-center">
             <div className="avatar mb-6">
-              <div className="w-3/5 mx-auto rounded-full ring ring-blue-300 ring-offset-2">
+              <div className="w-32 lg:w-24 mx-auto rounded-full ring ring-blue-600 ring-offset-2">
                 <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" />
                 {/* <img src="https://api.lorem.space/image/face?hash=3178" /> */}
               </div>
             </div>
 
-            <h3 className="text-2xl mb-4">{name}</h3>
+            <h3 className="text-lg mb-4">{name}</h3>
 
             <p className="mb-3 flex justify-center items-center gap-3">
               <FontAwesomeIcon

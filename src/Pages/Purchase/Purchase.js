@@ -23,16 +23,14 @@ const Purchase = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    if (user) {
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log(data);
-          setItem(data);
-          setBillAmount(data.price * data.minimumOrderQty);
-        });
-    }
-  }, [user, id]);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setItem(data);
+        setBillAmount(data.price * data.minimumOrderQty);
+      });
+  }, []);
 
   if (loading) {
     return <Loading />;
