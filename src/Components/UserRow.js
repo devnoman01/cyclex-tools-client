@@ -14,34 +14,37 @@ const UserRow = ({ user, index, refetch }) => {
 
   const handleMakeAdmin = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/user/admin/${email}`, {
-      method: "PUT",
-      // headers: {
-      //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      // },
-    })
-      .then((res) => {
-        // if (res.status === 403) {
-        //   Swal.fire({
-        //     title: "No Permission",
-        //     html: `You can't make ${email} an admin`,
-        //     icon: "error",
-        //     showConfirmButton: false,
-        //   });
-        // }
-        return res.json();
-      })
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Added As Admin",
-            html: `${email} is now an admin`,
-            icon: "success",
-            showConfirmButton: false,
+
+    Swal.fire({
+      title: "Update Role?",
+      text: "Are you sure to assign as admin?",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#218838",
+      cancelButtonColor: "#C82333",
+      confirmButtonText: "Yes, Update!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
+          method: "PUT",
+          // headers: {
+          //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          // },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Added As Admin",
+                html: `${email} is now an admin`,
+                icon: "success",
+                showConfirmButton: false,
+              });
+            }
           });
-        }
-      });
+      }
+    });
   };
 
   return (

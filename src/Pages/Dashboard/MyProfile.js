@@ -31,6 +31,10 @@ const MyProfile = () => {
 
   let name = null;
 
+  if (loading) {
+    return <Loading />;
+  }
+
   if (isLoading) {
     return <Loading />;
   }

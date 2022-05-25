@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../firebase.init";
 
 const useToken = (user) => {
   const [token, setToken] = useState("");

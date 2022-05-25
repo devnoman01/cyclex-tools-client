@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import Loading from "../../Components/Loading";
 import Navbar from "../../Components/Navbar";
 import auth from "../../firebase.init";
+import useAdmin from "../Authentication/RequireAdmin";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (adminLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -17,9 +27,9 @@ const Dashboard = () => {
             <div className="border-l-2 pl-5">
               <h2 className="text-3xl mb-2">Dashboard</h2>
               <p className="border-b-2 border-gray-300 pb-2">
-                User:{" "}
+                {admin ? "Admin" : "User"}
                 <span className="font-semibold text-blue-700">
-                  {user.email}
+                  : {user.email}
                 </span>
               </p>
               <hr />
@@ -38,55 +48,64 @@ const Dashboard = () => {
                   My Profile
                 </Link>
               </li>
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/myOrders"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  My Orders
-                </Link>
-              </li>
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/addReview"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  Add A Review
-                </Link>
-              </li>
 
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/manageProducts"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  Manage Products
-                </Link>
-              </li>
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/manageAllOrders"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  Manage All Orders
-                </Link>
-              </li>
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/addProduct"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  Add A Product
-                </Link>
-              </li>
-              <li className="border-2 border-gray-300 rounded-md mb-2">
-                <Link
-                  to="/dashboard/makeAdmin"
-                  className={`{selected?"bg-gray-400":""}`}
-                >
-                  Make Admin
-                </Link>
-              </li>
+              {user && !admin && (
+                <>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/myOrders"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      My Orders
+                    </Link>
+                  </li>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/addReview"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      Add A Review
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {admin && (
+                <>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/manageAllOrders"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      Manage All Orders
+                    </Link>
+                  </li>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/manageProducts"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      Manage Products
+                    </Link>
+                  </li>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/addProduct"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      Add A Product
+                    </Link>
+                  </li>
+                  <li className="border-2 border-gray-300 rounded-md mb-2">
+                    <Link
+                      to="/dashboard/makeAdmin"
+                      className={`{selected?"bg-gray-400":""}`}
+                    >
+                      Make Admin
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

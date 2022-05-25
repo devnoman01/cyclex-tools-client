@@ -5,11 +5,16 @@ import logo from "../assets/images/logo.png";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
 import { useQuery } from "react-query";
+import Loading from "./Loading";
 
 const Navbar = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
   // console.log(user);
   const [currentUser, setCurrentUser] = useState({});
+
+  if (loading) {
+    return <Loading />;
+  }
 
   // const { data, isLoading, refetch } = useQuery("user", () =>
   //   fetch(`http://localhost:5000/user?email=${user.email}`, {

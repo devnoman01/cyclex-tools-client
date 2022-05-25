@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
+import Loading from "../../Components/Loading";
 import auth from "../../firebase.init";
 
 const AddReview = () => {
@@ -11,6 +12,10 @@ const AddReview = () => {
     const ratingValue = parseInt(e.target.value);
     setRating(ratingValue);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();

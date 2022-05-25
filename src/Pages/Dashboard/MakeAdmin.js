@@ -7,7 +7,7 @@ const MakeAdmin = () => {
 
   // using react query to get all orders
   const { data, isLoading, refetch } = useQuery("user", () =>
-    fetch("http://localhost:5000/allUser", {
+    fetch("http://localhost:5000/admin", {
       method: "GET",
     })
       .then((res) => res.json())
