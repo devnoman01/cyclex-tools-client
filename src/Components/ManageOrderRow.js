@@ -51,46 +51,6 @@ const ManageOrderRow = ({ order, index }) => {
     </button>
   );
 
-  let status;
-  let updateButton;
-
-  const paidLabel = <p className="text-lg font-medium text-green-600">Paid</p>;
-
-  const notPaid = <p className="text-lg font-medium text-error">Pending</p>;
-
-  const shipButton = (
-    <button
-      onClick={handleShipNow}
-      className="btn btn-sm bg-green-300 font-medium"
-    >
-      Ship
-    </button>
-  );
-
-  const shippedLabel = (
-    <p className="text-lg font-medium text-green-600">Shipped</p>
-  );
-
-  if (!isPaid) {
-    updateButton = (
-      <button
-        onClick={handleCancelOrder}
-        className="btn btn-sm border-2 border-red-600 bg-red-200 text-black"
-      >
-        <FontAwesomeIcon className="footer-icon mr-1" icon={faXmark} />
-        Cancel
-      </button>
-    );
-  } else {
-    if (shipped) {
-      status = shippedLabel;
-      updateButton = "";
-    } else {
-      status = "";
-      updateButton = shipButton;
-    }
-  }
-
   return (
     <tr className="">
       <th>{index + 1}</th>
