@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const ProductRow = ({ product, index, refetch }) => {
   const { _id, name, img, minimumOrderQty, availableQty, price } = product;
 
+  // delete product function
   const handleDeleteProduct = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -37,7 +38,7 @@ const ProductRow = ({ product, index, refetch }) => {
   };
 
   return (
-    <tr className="hover">
+    <tr className="">
       <td>{index + 1}</td>
       <td>
         <div className="avatar">

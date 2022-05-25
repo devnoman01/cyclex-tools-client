@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ManageOrderRow = ({ order, index }) => {
+const ManageOrderRow = ({ order, index, refetch }) => {
   const {
     billAmount,
     isPaid,
@@ -31,6 +31,7 @@ const ManageOrderRow = ({ order, index }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         setShipped(true);
+        refetch();
         Swal.fire({
           title: "Status Updated!",
           html: "Order has been Shipped.",
@@ -81,7 +82,7 @@ const ManageOrderRow = ({ order, index }) => {
       </td>
       <td>
         {shipped ? (
-          <p className="text-lg font-medium text-green-600">Shipped</p>
+          <p className="text-md font-medium text-green-600">Shipped</p>
         ) : (
           <button
             onClick={handleShipNow}

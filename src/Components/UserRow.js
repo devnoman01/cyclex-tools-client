@@ -3,7 +3,7 @@ import React from "react";
 const UserRow = ({ product, index }) => {
   // const { _id, name, img, minimumOrderQty, availableQty, price } = product;
   return (
-    <tr className="hover">
+    <tr className="">
       <td></td>
       <td></td>
       <td></td>

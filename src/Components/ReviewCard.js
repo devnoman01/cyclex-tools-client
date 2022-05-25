@@ -14,10 +14,11 @@ const ReviewCard = ({ review }) => {
             <img src="https://api.lorem.space/image/face?hash=3174" />
           </div>
         </div>
+        {/* User name */}
         <h4 className="text-lg font-medium">{userName}</h4>
       </div>
       <div>
-        {/* User name */}
+        {/* Review text */}
         <p className="text-justify mb-4">{reviewText}</p>
 
         {/* Rating stat icon */}

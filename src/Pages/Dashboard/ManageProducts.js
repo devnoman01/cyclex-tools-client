@@ -6,6 +6,7 @@ import ProductRow from "../../Components/ProductRow";
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
+  // using react query to get all products
   const { data, isLoading, refetch } = useQuery(["products", products], () =>
     fetch("http://localhost:5000/products", {
       method: "GET",
@@ -19,16 +20,6 @@ const ManageProducts = () => {
   if (isLoading) {
     return <Loading />;
   }
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/products", {
-  //     method: "GET",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //     });
-  // }, [products]);
 
   return (
     <div>

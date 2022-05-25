@@ -10,18 +10,7 @@ const MyOrders = () => {
 
   const [userOrders, setUserOrders] = useState([]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:5000/order?email=${user.email}`, {
-  //       method: "GET",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setUserOrders(data);
-  //       });
-  //   }
-  // }, [user]);
-
+  // using react query to get user orders
   const { data, isLoading, refetch } = useQuery(["order", user], () =>
     fetch(`http://localhost:5000/order?email=${user.email}`, {
       method: "GET",

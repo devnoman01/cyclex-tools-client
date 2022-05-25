@@ -7,6 +7,7 @@ const OrderRow = ({ order, index, refetch }) => {
   const { billAmount, isPaid, orderQty, productName, productId, rate, _id } =
     order;
 
+  // cancel order function
   const handleCancelOrder = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -37,7 +38,7 @@ const OrderRow = ({ order, index, refetch }) => {
   };
 
   return (
-    <tr className="hover">
+    <tr className="">
       <th>{index + 1}</th>
       <td>{productName}</td>
       <td>{rate}</td>
