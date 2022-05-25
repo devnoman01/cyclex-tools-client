@@ -3,7 +3,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 
-const OrderRow = ({ order, index }) => {
+const OrderRow = ({ order, index, refetch }) => {
   const { billAmount, isPaid, orderQty, productName, productId, rate, _id } =
     order;
 
@@ -19,12 +19,19 @@ const OrderRow = ({ order, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Order Canceled!",
-          html: "Order has been canceled.",
-          icon: "success",
-          showConfirmButton: false,
-        });
+        fetch(`http://localhost:5000/order/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            Swal.fire({
+              title: "Order Canceled!",
+              html: "Order has been canceled.",
+              icon: "success",
+              showConfirmButton: false,
+            });
+          });
       }
     });
   };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import Loading from "../../Components/Loading";
 import OrderRow from "../../Components/OrderRow";
 import auth from "../../firebase.init";
@@ -9,19 +10,29 @@ const MyOrders = () => {
 
   const [userOrders, setUserOrders] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:5000/order?email=${user.email}`, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setUserOrders(data);
-        });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`http://localhost:5000/order?email=${user.email}`, {
+  //       method: "GET",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setUserOrders(data);
+  //       });
+  //   }
+  // }, [user]);
 
-  if (loading) {
+  const { data, isLoading, refetch } = useQuery(["order", user], () =>
+    fetch(`http://localhost:5000/order?email=${user.email}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserOrders(data);
+      })
+  );
+
+  if (loading || isLoading) {
     return <Loading />;
   }
 
@@ -44,7 +55,12 @@ const MyOrders = () => {
             </thead>
             <tbody>
               {userOrders.map((order, index) => (
-                <OrderRow key={order._id} order={order} index={index} />
+                <OrderRow
+                  key={order._id}
+                  order={order}
+                  index={index}
+                  refetch={refetch}
+                />
               ))}
             </tbody>
           </table>
