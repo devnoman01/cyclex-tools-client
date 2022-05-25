@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../../Components/Loading";
 import ManageOrderRow from "../../Components/ManageOrderRow";
 
 const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/allOrders`, {
+  // using react query to get all orders
+  const { data, isLoading, refetch } = useQuery(["order"], () =>
+    fetch("http://localhost:5000/allOrders", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);
-      });
-  }, []);
+      })
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
@@ -35,7 +42,12 @@ const ManageAllOrders = () => {
             </thead>
             <tbody>
               {orders.map((order, index) => (
-                <ManageOrderRow key={order._id} order={order} index={index} />
+                <ManageOrderRow
+                  key={order._id}
+                  order={order}
+                  index={index}
+                  refetch={refetch}
+                />
               ))}
             </tbody>
           </table>

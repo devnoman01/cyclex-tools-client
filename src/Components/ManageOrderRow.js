@@ -17,7 +17,34 @@ const ManageOrderRow = ({ order, index, refetch }) => {
   } = order;
   const [shipped, setShipped] = useState(isShipped);
 
-  const handleCancelOrder = () => {};
+  const handleCancelOrder = () => {
+    // e.preventDefault();
+    Swal.fire({
+      title: "Cancel Order?",
+      text: `Are you sure to cancel the order?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#C82333",
+      cancelButtonColor: "#218838",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/order/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            Swal.fire({
+              title: "Order Canceled!",
+              html: "Order has been canceled.",
+              icon: "success",
+              showConfirmButton: false,
+            });
+          });
+      }
+    });
+  };
 
   const handleShipNow = (e) => {
     Swal.fire({
@@ -41,16 +68,6 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       }
     });
   };
-
-  const cancelButton = (
-    <button
-      onClick={handleCancelOrder}
-      className="btn btn-sm border-2 border-red-600 bg-red-200 text-black"
-    >
-      <FontAwesomeIcon className="footer-icon mr-1" icon={faXmark} />
-      Cancel
-    </button>
-  );
 
   return (
     <tr className="">
