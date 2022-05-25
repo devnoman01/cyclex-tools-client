@@ -9,6 +9,7 @@ import Loading from "../../Components/Loading";
 import auth from "../../firebase.init";
 import ForgetPasswordModal from "../../Components/ForgetPasswordModal";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,12 +26,10 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
   let loginError;
 
   useEffect(() => {
-    if (user || gUser) {
+    if (user) {
       Swal.fire({
         title: "Login Successful",
         html: "Welcome to your profile",
@@ -41,16 +40,14 @@ const Login = () => {
       });
       navigate(from, { replace: true });
     }
-  }, [user, gUser, from, navigate]);
+  }, [user, from, navigate]);
 
-  if (loading || gLoading) {
+  if (loading) {
     return <Loading />;
   }
 
-  if (error || gError) {
-    loginError = (
-      <p className="text-red-600">{error?.message || gError?.message}</p>
-    );
+  if (error) {
+    loginError = <p className="text-red-600">{error?.message}</p>;
   }
 
   const onSubmit = (data) => {
@@ -149,17 +146,7 @@ const Login = () => {
               </Link>
             </p>
             <div className="divider">OR</div>
-            <button
-              onClick={() => signInWithGoogle()}
-              className="btn btn-outline gap-2 w-full"
-            >
-              <img
-                className="w-5 h-5"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt=""
-              />
-              Continue with Google
-            </button>
+            <SocialLogin />
           </div>
         </div>
         <ForgetPasswordModal />

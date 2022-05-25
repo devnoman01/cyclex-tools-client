@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,10 @@ import {
 import auth from "../../firebase.init";
 import Loading from "../../Components/Loading";
 import Footer from "../../Components/Footer";
+import Swal from "sweetalert2";
+import useAuthUser from "../../Hooks/useAuthUser";
+import SocialLogin from "./SocialLogin";
+import useToken from "../../Hooks/useToken";
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
@@ -18,33 +22,92 @@ const Register = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
-  let signInError;
-
-  if (loading || gLoading || updating) {
-    return <Loading />;
-  }
-
-  if (error || gError || updateError) {
-    signInError = (
-      <p className="text-red-600">
-        {error?.message || gError?.message || updateError?.message}
-      </p>
-    );
-  }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+
+    // const user = {
+    //   displayName: data.name,
+    //   email: data.email,
+    //   phoneNumber: null,
+    //   photoURL:
+    //     "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg",
+    //   education: "",
+    //   linkedin: "",
+    //   address: "",
+    // };
+
+    // fetch("http://localhost:5000/user", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(user),
+    // })
+    //   .then((res) => res.json())
+    //   .then((inserted) => {
+    //     if (inserted.insertedId) {
+    //       console.log(inserted);
+    //       Swal.fire({
+    //         title: "User Registered",
+    //         html: "Account registration successful",
+    //         icon: "success",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#218838",
+    //         cancelButtonColor: "#C82333",
+    //         confirmButtonText: "Update Profile!",
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
+    //           reset();
+    //           navigate("/dashboard/myProfile");
+    //         }
+    //       });
+    //     }
+    //   });
   };
+
+  const [token] = useToken(user);
+
+  useEffect(() => {
+    if (user) {
+    }
+  });
+
+  if (token) {
+    navigate("/");
+    reset();
+    Swal.fire({
+      title: "User Registered",
+      html: "Account registration successful",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#218838",
+      cancelButtonColor: "#C82333",
+      confirmButtonText: "Update Profile!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/dashboard/myProfile");
+      }
+    });
+  }
+
+  let signInError;
+
+  if (loading || updating) {
+    return <Loading />;
+  }
+
+  if (error || updateError) {
+    signInError = (
+      <p className="text-red-600">{error?.message || updateError?.message}</p>
+    );
+  }
 
   return (
     <>
@@ -149,17 +212,7 @@ const Register = () => {
                 </Link>
               </p>
               <div className="divider">OR</div>
-              <button
-                onClick={() => signInWithGoogle()}
-                className="btn btn-outline gap-2 w-full"
-              >
-                <img
-                  className="w-5 h-5"
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                  alt=""
-                />
-                Continue with Google
-              </button>
+              <SocialLogin />
             </div>
           </div>
         </div>

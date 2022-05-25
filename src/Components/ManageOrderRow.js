@@ -10,7 +10,6 @@ const ManageOrderRow = ({ order, index, refetch }) => {
     isShipped,
     orderQty,
     productName,
-    productId,
     rate,
     userEmail,
     _id,
