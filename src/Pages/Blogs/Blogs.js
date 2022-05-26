@@ -19,7 +19,7 @@ const Blogs = () => {
                 />
               </div>
               <div className="w-full lg:w-2/3">
-                <h2 className="text-xl font-medium">
+                <h2 className="text-xl font-medium text-center md:text-left">
                   How will you improve the performance of a React Application?
                 </h2>
                 <p className="text-justify mt-3">
@@ -44,7 +44,7 @@ const Blogs = () => {
                 />
               </div>
               <div className="w-full lg:w-2/3">
-                <h2 className="text-xl font-medium">
+                <h2 className="text-xl font-medium text-center md:text-left">
                   What are the different ways to manage a state in a React
                   application?
                 </h2>
@@ -73,7 +73,7 @@ const Blogs = () => {
                 />
               </div>
               <div className="w-full lg:w-2/3">
-                <h2 className="text-xl font-medium">
+                <h2 className="text-xl font-medium text-center md:text-left">
                   How does prototypical inheritance work?
                 </h2>
                 <p className="text-justify mt-3">
@@ -100,7 +100,7 @@ const Blogs = () => {
                 />
               </div>
               <div className="w-full lg:w-2/3">
-                <h2 className="text-xl font-medium">
+                <h2 className="text-xl font-medium text-center md:text-left">
                   You have an array of products. Each product has a name, price,
                   description, etc. How will you implement a search to find
                   products by name?
@@ -132,7 +132,7 @@ const Blogs = () => {
                 />
               </div>
               <div className="w-full lg:w-2/3">
-                <h2 className="text-xl font-medium">
+                <h2 className="text-xl font-medium text-center md:text-left">
                   What is a unit test? Why should write unit tests?
                 </h2>
                 <p className="text-justify mt-3">

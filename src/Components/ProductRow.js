@@ -46,7 +46,7 @@ const ProductRow = ({ product, index, refetch }) => {
       <td>
         <div className="avatar">
           <div className="w-14 rounded">
-            <img className="" src={img} />
+            <img className="" src={img} alt="Product Image" />
           </div>
         </div>
       </td>

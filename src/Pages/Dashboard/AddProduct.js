@@ -1,7 +1,11 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import auth from "../../firebase.init";
 
 const AddProduct = () => {
+  const navigate = useNavigate();
   const handleAddProduct = (e) => {
     e.preventDefault();
     const name = e.target.name.value.toUpperCase();
@@ -11,42 +15,58 @@ const AddProduct = () => {
     const availableQty = parseInt(e.target.stockQty.value);
     const price = parseInt(e.target.price.value);
 
-    const product = {
-      name: name,
-      img: img,
-      description: description,
-      minimumOrderQty: minimumOrderQty,
-      availableQty: availableQty,
-      price: price,
-    };
+    if (minimumOrderQty <= availableQty) {
+      const product = {
+        name: name,
+        img: img,
+        description: description,
+        minimumOrderQty: minimumOrderQty,
+        availableQty: availableQty,
+        price: price,
+      };
 
-    fetch("http://localhost:5000/products", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => res.json())
-      .then((inserted) => {
-        if (inserted.insertedId) {
-          Swal.fire({
-            title: "Product Added",
-            html: `${product.name} added in product list`,
-            icon: "success",
-            showConfirmButton: false,
-          });
-          e.target.reset();
-        } else {
-          Swal.fire({
-            title: "Failed to add product",
-            html: "Request to add new product failed",
-            icon: "error",
-            showConfirmButton: false,
-          });
-        }
+      fetch("http://localhost:5000/products", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(product),
+      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          return res.json();
+        })
+        .then((inserted) => {
+          if (inserted.insertedId) {
+            Swal.fire({
+              title: "Product Added",
+              html: `${product.name} added in product list`,
+              icon: "success",
+              showConfirmButton: false,
+            });
+            e.target.reset();
+          } else {
+            Swal.fire({
+              title: "Failed to add product",
+              html: "Request to add new product failed",
+              icon: "error",
+              showConfirmButton: false,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Check Order Quantity",
+        html: "Order quantity should be less than stock quantity",
+        icon: "error",
+        showConfirmButton: false,
       });
+    }
   };
 
   return (

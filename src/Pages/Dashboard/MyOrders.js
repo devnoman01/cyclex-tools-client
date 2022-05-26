@@ -53,6 +53,7 @@ const MyOrders = () => {
                 <th>Bill Amount</th>
                 <th>Payment</th>
                 <th className="pr-8">Cancel Order</th>
+                <th>Transaction Id</th>
               </tr>
             </thead>
             <tbody>

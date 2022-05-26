@@ -14,6 +14,7 @@ import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/Home/Home";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -55,6 +56,7 @@ function App() {
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
             <Route path="myProfile" element={<MyProfile />} />
+            <Route path="payment/:id" element={<Payment />} />
 
             <Route
               path="manageProducts"

@@ -59,14 +59,24 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Update",
     }).then((result) => {
       if (result.isConfirmed) {
-        setShipped(true);
-        refetch();
-        Swal.fire({
-          title: "Status Updated!",
-          html: "Order has been Shipped.",
-          icon: "success",
-          showConfirmButton: false,
-        });
+        fetch(`http://localhost:5000/shipOrder/${_id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            Swal.fire({
+              title: "Status Updated!",
+              html: "Order has been Shipped.",
+              icon: "success",
+              showConfirmButton: false,
+            });
+            console.log(data);
+          });
       }
     });
   };
@@ -99,18 +109,22 @@ const ManageOrderRow = ({ order, index, refetch }) => {
           </button>
         )}
       </td>
-      <td>
-        {shipped ? (
-          <p className="text-md font-medium text-green-600">Shipped</p>
-        ) : (
-          <button
-            onClick={handleShipNow}
-            className="btn btn-xs btn-success text-white font-medium"
-          >
-            Deliver
-          </button>
-        )}
-      </td>
+      {isPaid ? (
+        <td>
+          {isPaid && shipped ? (
+            <p className="text-md font-medium text-green-600">Shipped</p>
+          ) : (
+            <button
+              onClick={handleShipNow}
+              className="btn btn-xs btn-success text-white font-medium"
+            >
+              Deliver
+            </button>
+          )}
+        </td>
+      ) : (
+        <td></td>
+      )}
     </tr>
   );
 };

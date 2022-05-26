@@ -2,10 +2,19 @@ import React from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const OrderRow = ({ order, index, refetch }) => {
-  const { billAmount, isPaid, orderQty, productName, productId, rate, _id } =
-    order;
+  const {
+    billAmount,
+    isPaid,
+    orderQty,
+    productName,
+    productId,
+    rate,
+    _id,
+    transactionId,
+  } = order;
 
   // cancel order function
   const handleCancelOrder = (e) => {
@@ -51,9 +60,12 @@ const OrderRow = ({ order, index, refetch }) => {
         {isPaid ? (
           <p className="text-md font-semibold text-green-700">Paid</p>
         ) : (
-          <button className="btn btn-sm font-medium bg-green-600 text-white hover:bg-green-600 hover:text-white">
+          <Link
+            to={`/dashboard/payment/${_id}`}
+            className="btn btn-sm font-medium bg-green-600 text-white hover:bg-green-600 hover:text-white"
+          >
             Pay Now
-          </button>
+          </Link>
         )}
       </td>
       <td>
@@ -69,6 +81,7 @@ const OrderRow = ({ order, index, refetch }) => {
           </button>
         )}
       </td>
+      <td>{transactionId && transactionId}</td>
     </tr>
   );
 };
