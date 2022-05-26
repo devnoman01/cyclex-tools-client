@@ -88,7 +88,7 @@ const ForgetPasswordModal = () => {
             <input
               value="Send Password Reset Request"
               type="submit"
-              className="input input-bordered w-full bg-accent text-white uppercase font-medium"
+              className="input input-bordered w-full bg-primary text-white uppercase font-medium"
             />
           </form>
           {loading}

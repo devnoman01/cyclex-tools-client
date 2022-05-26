@@ -19,25 +19,28 @@ const SocialLogin = () => {
 
   const [token] = useToken(user);
 
+  useEffect(() => {
+    if (token) {
+      Swal.fire({
+        title: "User Registered",
+        html: "Account registration successful",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#218838",
+        cancelButtonColor: "#C82333",
+        confirmButtonText: "Update Profile!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/dashboard/myProfile");
+        } else {
+          navigate(from, { replace: true });
+        }
+      });
+    }
+  }, [token, from, navigate]);
+
   if (loading) {
     return <Loading />;
-  }
-
-  if (token) {
-    let from = location.state?.from?.pathname || "/";
-    Swal.fire({
-      title: "User Registered",
-      html: "Account registration successful",
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonColor: "#218838",
-      cancelButtonColor: "#C82333",
-      confirmButtonText: "Update Profile!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/dashboard/myProfile");
-      }
-    });
   }
 
   // if redirected to login page then redirect back after login

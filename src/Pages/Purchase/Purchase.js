@@ -71,12 +71,14 @@ const Purchase = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(order),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          e.target.reset();
           Swal.fire({
             title: "Order Place Successful",
             html: `Your ordered ${itemQuantity} ${item.name}`,
@@ -231,7 +233,7 @@ const Purchase = () => {
                     value="Place Order"
                     className={`${
                       orderButtonStatus
-                        ? "btn w-full bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                        ? "btn btn-primary w-full text-white"
                         : "btn btn-disabled w-full"
                     }`}
                   />

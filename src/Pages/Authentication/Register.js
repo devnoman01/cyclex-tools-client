@@ -37,32 +37,29 @@ const Register = () => {
   const [token] = useToken(user);
 
   useEffect(() => {
-    if (user) {
+    if (token) {
+      navigate("/");
+      reset();
+      Swal.fire({
+        title: "User Registered",
+        html: "Account registration successful",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#218838",
+        cancelButtonColor: "#C82333",
+        confirmButtonText: "Update Profile!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/dashboard/myProfile");
+        }
+      });
     }
-  }, []);
+  }, [token]);
 
   let signInError;
 
   if (loading || updating) {
     return <Loading />;
-  }
-
-  if (token) {
-    navigate("/");
-    reset();
-    Swal.fire({
-      title: "User Registered",
-      html: "Account registration successful",
-      icon: "success",
-      showCancelButton: true,
-      confirmButtonColor: "#218838",
-      cancelButtonColor: "#C82333",
-      confirmButtonText: "Update Profile!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/dashboard/myProfile");
-      }
-    });
   }
 
   if (user) {

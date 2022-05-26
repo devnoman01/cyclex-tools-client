@@ -10,6 +10,7 @@ import auth from "../../firebase.init";
 import ForgetPasswordModal from "../../Components/ForgetPasswordModal";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,11 +29,21 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   let loginError;
+  const [token] = useToken(user);
 
   useEffect(() => {
-    if (user) {
+    if (token) {
+      Swal.fire({
+        title: "Login Successful",
+        html: "Welcome to your profile",
+        timer: 3000,
+        timerProgressBar: false,
+        icon: "success",
+        showConfirmButton: false,
+      });
+      navigate(from, { replace: true });
     }
-  }, []);
+  }, [token, from, navigate]);
 
   if (loading) {
     return <Loading />;
@@ -40,17 +51,6 @@ const Login = () => {
 
   if (error) {
     loginError = <p className="text-red-600">{error?.message}</p>;
-  }
-  if (user) {
-    Swal.fire({
-      title: "Login Successful",
-      html: "Welcome to your profile",
-      timer: 3000,
-      timerProgressBar: false,
-      icon: "success",
-      showConfirmButton: false,
-    });
-    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {

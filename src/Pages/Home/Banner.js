@@ -5,10 +5,10 @@ const Banner = () => {
   return (
     <div className="max-w-6xl mx-auto w-full relative">
       <div className="container mx-auto px-3 lg:px-0">
-        <div className="w-full lg:my-20 flex flex-col lg:flex-row items-center gap-8">
+        <div className="w-full mb-10 lg:my-20 flex flex-col lg:flex-row items-center gap-8">
           <div className="w-full lg:w-1/2 py-10">
             <h1 className="text-5xl text-primary font-medium">
-              We manufactures cycle parts and components
+              We manufacture cycle parts and components
             </h1>
             <p className="my-6">
               Lorem, ipsum dolor sit amet consectetur adipisicing.

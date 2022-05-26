@@ -14,6 +14,11 @@ const Navbar = ({ children }) => {
     return <Loading />;
   }
 
+  const logout = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+  };
+
   return (
     <div className="sticky top-0 z-50">
       <div className="w-full mx-auto bg-base-100 ">
@@ -129,7 +134,7 @@ const Navbar = ({ children }) => {
                       <li>
                         <button
                           onClick={() => {
-                            signOut(auth);
+                            logout();
                           }}
                           className={`${
                             user ? "block" : ""

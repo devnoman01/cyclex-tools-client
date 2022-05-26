@@ -10,6 +10,9 @@ const ManageAllOrders = () => {
   const { data, isLoading, refetch } = useQuery("order", () =>
     fetch("http://localhost:5000/allOrders", {
       method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

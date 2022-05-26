@@ -21,6 +21,9 @@ const ProductRow = ({ product, index, refetch }) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/products/${_id}`, {
           method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -42,8 +45,8 @@ const ProductRow = ({ product, index, refetch }) => {
       <td>{index + 1}</td>
       <td>
         <div className="avatar">
-          <div className="w-12 rounded">
-            <img src={img} />
+          <div className="w-14 rounded">
+            <img className="" src={img} />
           </div>
         </div>
       </td>

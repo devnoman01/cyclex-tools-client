@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const FeaturedProductsCard = ({ product }) => {
+const ProductsCard = ({ product }) => {
   const navigate = useNavigate();
 
   const { _id, name, img, description, price, minimumOrderQty, availableQty } =
@@ -28,7 +28,7 @@ const FeaturedProductsCard = ({ product }) => {
         <div className="card-actions justify-center">
           <button
             onClick={handleOrder}
-            className="btn btn-sm bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+            className="btn w-full btn-primary text-white"
           >
             Order Now
           </button>
@@ -38,4 +38,4 @@ const FeaturedProductsCard = ({ product }) => {
   );
 };
 
-export default FeaturedProductsCard;
+export default ProductsCard;

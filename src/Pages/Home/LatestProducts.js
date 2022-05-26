@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import FeaturedProductsCard from "../../Components/FeaturedProductsCard";
+import ProductsCard from "../../Components/ProductsCard";
 import Loading from "../../Components/Loading";
 
 const LatestProducts = () => {
@@ -9,6 +9,9 @@ const LatestProducts = () => {
   useEffect(() => {
     fetch("http://localhost:5000/latestProducts", {
       method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -26,7 +29,7 @@ const LatestProducts = () => {
           </h1>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
-              <FeaturedProductsCard key={product._id} product={product} />
+              <ProductsCard key={product._id} product={product} />
             ))}
           </div>
         </div>
