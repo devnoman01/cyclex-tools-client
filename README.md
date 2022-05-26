@@ -6,9 +6,9 @@
 
 ## Live site link:
 
-Click this [Live link]()
+Click this [Live link](https://manufacturer-portal-5a42e.web.app)
 
-Or this link to view live site: [Cyclex Tools]()
+Or this link to view live site: [Cyclex Tools](https://manufacturer-portal-5a42e.web.app)
 
 ---
 
