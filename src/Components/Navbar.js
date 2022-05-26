@@ -28,8 +28,8 @@ const Navbar = ({ children }) => {
   };
 
   return (
-    <div className="sticky top-0 z-50">
-      <div className="w-full mx-auto bg-base-100 ">
+    <div className="sticky top-0 z-50 ">
+      <div className="w-full mx-auto">
         <div className="mx-auto">
           <div className="drawer drawer-end">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -56,7 +56,7 @@ const Navbar = ({ children }) => {
                   </label>
                 </div>
 
-                <div className="flex-1  justify-center lg:justify-start">
+                <div className="flex-1 justify-center lg:justify-start">
                   <Link to="/" className="normal-case flex items-center">
                     <img className="w-16 md:w-20 h-auto" src={logo} alt="" />
                     <span className="text-3xl lg:text-4xl font-semibold italic ml-2 pb-2 text-primary">
@@ -86,7 +86,7 @@ const Navbar = ({ children }) => {
                   </label>
                 </div>
 
-                <div className="flex-none hidden lg:block">
+                <div className="flex-none hidden  lg:block">
                   <ul className="menu menu-horizontal">
                     <li>
                       <Link
