@@ -18,15 +18,17 @@ const LatestProducts = () => {
   }, [products]);
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="container mx-auto py-14 px-4">
-        <h1 className="text-center text-4xl md:text-5xl font-medium mb-16 text-primary">
-          Latest Products
-        </h1>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <FeaturedProductsCard key={product._id} product={product} />
-          ))}
+    <div className="w-full bg-blue-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="container mx-auto py-14 px-4">
+          <h1 className="text-center text-4xl md:text-5xl font-medium mb-16 text-primary">
+            Latest Products
+          </h1>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <FeaturedProductsCard key={product._id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

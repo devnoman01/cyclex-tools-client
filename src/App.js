@@ -17,6 +17,7 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import Home from "./Pages/Home/Home";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import NotFound from "./Pages/NotFound/NotFound";
+import Products from "./Pages/Products/Products";
 import Purchase from "./Pages/Purchase/Purchase";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           {/* open routes */}
           <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/myPortfolio" element={<MyPortfolio />} />
           <Route path="/login" element={<Login />} />

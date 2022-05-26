@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/cyclex-tools.png";
-import logo1 from "../assets/images/cyclex-tools-1.png";
+import logo from "../assets/images/cyclex-tools-1.png";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
 import { useQuery } from "react-query";
@@ -46,7 +45,7 @@ const Navbar = ({ children }) => {
 
                 <div className="flex-1  justify-center lg:justify-start">
                   <Link to="/" className="normal-case flex items-center">
-                    <img className="w-16 md:w-20 h-auto" src={logo1} alt="" />
+                    <img className="w-16 md:w-20 h-auto" src={logo} alt="" />
                     <span className="text-3xl lg:text-4xl font-semibold italic ml-2 pb-2 text-primary">
                       Cyclex Tools
                     </span>
@@ -82,6 +81,14 @@ const Navbar = ({ children }) => {
                         className="font-medium rounded-md text-primary text-lg"
                       >
                         Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/products"
+                        className="font-medium rounded-md text-primary text-lg"
+                      >
+                        Products
                       </Link>
                     </li>
                     <li>
@@ -160,6 +167,14 @@ const Navbar = ({ children }) => {
                     className="font-medium rounded-md text-primary text-md"
                   >
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/products"
+                    className="font-medium rounded-md text-primary text-md"
+                  >
+                    Products
                   </Link>
                 </li>
                 <li>

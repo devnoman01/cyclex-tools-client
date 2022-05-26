@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
+import logo from "../assets/images/cyclex-tools-1.png";
 
 const Footer = () => {
   return (
@@ -7,8 +8,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <footer className="footer container mx-auto py-10 px-3 md:px-5 text-base-content">
           <div>
-            <img className="w-52" src={logo} alt="" />
-            <h3 className="text-xl font-medium">Auto-Part Manufacturer</h3>
+            <Link to="/" className="text-left flex items-star">
+              <img className="w-16 md:w-20 h-auto" src={logo} alt="" />
+              <span className="text-3xl lg:text-4xl font-semibold italic ml-2 pb-2 text-primary">
+                Cyclex Tools
+              </span>
+            </Link>
             <p>Manufacturing trustworthy products since 1992</p>
           </div>
           <div>
