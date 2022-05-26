@@ -22,7 +22,7 @@ const Reviews = () => {
     <div className="max-w-6xl mx-auto">
       <div className="container mx-auto py-14 px-4">
         {/* review section title */}
-        <h1 className="text-center text-4xl md:text-5xl font-medium mb-16 text-secondary">
+        <h1 className="text-center text-4xl md:text-5xl font-medium mb-16 text-primary">
           Users Reviews
         </h1>
         {/* review card container */}
