@@ -57,7 +57,7 @@ const AddProduct = () => {
           onSubmit={handleAddProduct}
           className="bg-slate-50 px-5 pt-4 pb-8 border-2 shadow-md rounded-lg"
         >
-          <h3 className="text-3xl text-center">Edit Profile</h3>
+          <h3 className="text-3xl text-center">Add Product</h3>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Product Name</span>
