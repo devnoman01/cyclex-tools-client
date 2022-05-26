@@ -1,9 +1,14 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import Loading from "../../Components/Loading";
 import UserRow from "../../Components/UserRow";
+import auth from "../../firebase.init";
 
 const MakeAdmin = () => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   // using react query to get all orders
   const { data, isLoading, refetch } = useQuery("user", () =>
@@ -13,11 +18,22 @@ const MakeAdmin = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        return res.json();
+      })
       .then((data) => {
         setUsers(data);
       })
   );
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>

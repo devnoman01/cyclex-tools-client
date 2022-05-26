@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/cyclex-tools-1.png";
@@ -9,6 +9,13 @@ import Loading from "./Loading";
 
 const Navbar = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setName(user.displayName);
+    }
+  }, [user]);
 
   if (loading) {
     return <Loading />;
@@ -16,6 +23,7 @@ const Navbar = ({ children }) => {
 
   const logout = () => {
     signOut(auth);
+    setName("");
     localStorage.removeItem("accessToken");
   };
 
@@ -83,7 +91,7 @@ const Navbar = ({ children }) => {
                     <li>
                       <Link
                         to="/"
-                        className="font-medium rounded-md text-primary text-lg"
+                        className="font-medium rounded-md px-2 mr-1 text-primary text-md"
                       >
                         Home
                       </Link>
@@ -91,7 +99,7 @@ const Navbar = ({ children }) => {
                     <li>
                       <Link
                         to="/products"
-                        className="font-medium rounded-md text-primary text-lg"
+                        className="font-medium rounded-md px-2 mr-1 text-primary text-md"
                       >
                         Products
                       </Link>
@@ -99,7 +107,7 @@ const Navbar = ({ children }) => {
                     <li>
                       <Link
                         to="/blogs"
-                        className="font-medium rounded-md text-primary text-lg"
+                        className="font-medium rounded-md px-2 mr-1 text-primary text-md"
                       >
                         Blogs
                       </Link>
@@ -107,7 +115,7 @@ const Navbar = ({ children }) => {
                     <li>
                       <Link
                         to="/myPortfolio"
-                        className="font-medium rounded-md text-primary text-lg"
+                        className="font-medium rounded-md px-2 mr-1 text-primary text-md"
                       >
                         My Portfolio
                       </Link>
@@ -116,7 +124,7 @@ const Navbar = ({ children }) => {
                       <li>
                         <Link
                           to="/dashboard"
-                          className="font-medium rounded-md text-primary text-lg mr-1"
+                          className="font-medium rounded-md px-2 mr-1 text-primary text-md"
                         >
                           Dashboard
                         </Link>
@@ -124,8 +132,8 @@ const Navbar = ({ children }) => {
                     )}
                     {user && (
                       <li>
-                        <p className="underline bg-slate-50 rounded-md mr-1 text-primary">
-                          {user.displayName}
+                        <p className="underline bg-slate-50 rounded-md mr-2 px-1 text-primary">
+                          {name}
                         </p>
                       </li>
                     )}

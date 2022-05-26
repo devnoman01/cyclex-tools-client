@@ -58,7 +58,7 @@ const UserRow = ({ user, index, refetch }) => {
         </div>
       </td>
       <td>{user.email}</td>
-      <td>{user.name}</td>
+      <td>{user?.name}</td>
       <td>
         {role === "admin" ? (
           <span className="text-green-500 font-semibold">Admin</span>

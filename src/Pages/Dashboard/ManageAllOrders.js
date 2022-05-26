@@ -1,10 +1,14 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading";
 import ManageOrderRow from "../../Components/ManageOrderRow";
+import auth from "../../firebase.init";
 
 const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
   // using react query to get all orders
   const { data, isLoading, refetch } = useQuery("order", () =>
@@ -14,7 +18,14 @@ const ManageAllOrders = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        return res.json();
+      })
       .then((data) => {
         setOrders(data);
       })
@@ -38,9 +49,9 @@ const ManageAllOrders = () => {
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Amount</th>
-                <th>Payment</th>
-                <th>Cancel Order</th>
                 <th>Status</th>
+                <th>Cancel Order</th>
+                <th>Update</th>
               </tr>
             </thead>
             <tbody>

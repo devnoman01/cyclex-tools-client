@@ -1,6 +1,8 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading";
 import OrderRow from "../../Components/OrderRow";
 import auth from "../../firebase.init";
@@ -9,6 +11,7 @@ const MyOrders = () => {
   const [user, loading, error] = useAuthState(auth);
 
   const [userOrders, setUserOrders] = useState([]);
+  const navigate = useNavigate();
 
   // using react query to get user orders
   const { data, isLoading, refetch } = useQuery(["order", user], () =>
@@ -18,7 +21,14 @@ const MyOrders = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        return res.json();
+      })
       .then((data) => {
         setUserOrders(data);
       })

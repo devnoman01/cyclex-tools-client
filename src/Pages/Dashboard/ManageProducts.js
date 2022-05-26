@@ -1,10 +1,14 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading";
 import ProductRow from "../../Components/ProductRow";
+import auth from "../../firebase.init";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   // using react query to get all products
   const { data, isLoading, refetch } = useQuery("products", () =>
@@ -14,7 +18,14 @@ const ManageProducts = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        return res.json();
+      })
       .then((data) => {
         setProducts(data);
       })
