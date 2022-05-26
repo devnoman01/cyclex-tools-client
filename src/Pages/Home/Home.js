@@ -16,6 +16,7 @@ const Home = () => {
       {/* extra part-1 */}
       <OurPartners />
       <Reviews />
+      {/* extra part-2 */}
       <Contact />
       <Footer />
     </>
