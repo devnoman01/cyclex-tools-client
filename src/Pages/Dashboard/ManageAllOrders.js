@@ -12,7 +12,7 @@ const ManageAllOrders = () => {
 
   // using react query to get all orders
   const { data, isLoading, refetch } = useQuery("order", () =>
-    fetch("http://localhost:5000/allOrders", {
+    fetch("https://evening-spire-15810.herokuapp.com/allOrders", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

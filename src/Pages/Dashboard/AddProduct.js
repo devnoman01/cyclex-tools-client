@@ -25,7 +25,7 @@ const AddProduct = () => {
         price: price,
       };
 
-      fetch("http://localhost:5000/products", {
+      fetch("https://evening-spire-15810.herokuapp.com/products", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -15,12 +15,15 @@ const MyOrders = () => {
 
   // using react query to get user orders
   const { data, isLoading, refetch } = useQuery(["order", user], () =>
-    fetch(`http://localhost:5000/order?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://evening-spire-15810.herokuapp.com/order?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);

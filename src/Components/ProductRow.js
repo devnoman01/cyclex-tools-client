@@ -19,7 +19,7 @@ const ProductRow = ({ product, index, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://evening-spire-15810.herokuapp.com/products/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

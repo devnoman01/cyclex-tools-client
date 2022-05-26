@@ -27,12 +27,15 @@ const MyProfile = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/user?email=${user.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://evening-spire-15810.herokuapp.com/user?email=${user.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setCurrentUser(data[0]);
@@ -75,7 +78,7 @@ const MyProfile = () => {
       number,
     };
 
-    fetch(`http://localhost:5000/user/${currentUser._id}`, {
+    fetch(`https://evening-spire-15810.herokuapp.com/user/${currentUser._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

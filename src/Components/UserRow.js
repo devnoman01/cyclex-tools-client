@@ -25,7 +25,7 @@ const UserRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Update!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://evening-spire-15810.herokuapp.com/user/admin/${email}`, {
           method: "PUT",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

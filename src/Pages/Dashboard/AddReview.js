@@ -28,7 +28,7 @@ const AddReview = () => {
         rating: rating,
       };
 
-      fetch("http://localhost:5000/review", {
+      fetch("https://evening-spire-15810.herokuapp.com/review", {
         method: "POST",
         headers: {
           "content-type": "application/json",

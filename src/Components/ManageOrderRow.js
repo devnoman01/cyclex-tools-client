@@ -28,7 +28,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://evening-spire-15810.herokuapp.com/order/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -59,7 +59,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Update",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/shipOrder/${_id}`, {
+        fetch(`https://evening-spire-15810.herokuapp.com/shipOrder/${_id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

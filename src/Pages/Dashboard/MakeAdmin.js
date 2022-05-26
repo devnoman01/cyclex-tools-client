@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
   // using react query to get all orders
   const { data, isLoading, refetch } = useQuery("user", () =>
-    fetch("http://localhost:5000/admin", {
+    fetch("https://evening-spire-15810.herokuapp.com/admin", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -19,7 +19,7 @@ const Purchase = () => {
 
   const { id } = useParams();
 
-  const url = `http://localhost:5000/purchase/${id}`;
+  const url = `https://evening-spire-15810.herokuapp.com/purchase/${id}`;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -67,7 +67,7 @@ const Purchase = () => {
       userName: user.displayName,
       userPhone: e.target.phone.value,
     };
-    fetch("http://localhost:5000/order", {
+    fetch("https://evening-spire-15810.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

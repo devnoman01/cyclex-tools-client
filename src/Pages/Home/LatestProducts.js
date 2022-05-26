@@ -7,7 +7,7 @@ const LatestProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/latestProducts", {
+    fetch("https://evening-spire-15810.herokuapp.com/latestProducts", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
