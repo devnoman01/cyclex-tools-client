@@ -110,39 +110,39 @@ const AddReview = () => {
                 type="radio"
                 value={1}
                 name="rating-2"
-                className="mask mask-star-2 bg-blue-600"
+                className="mask mask-star-2 bg-primary"
               />
               <input
                 type="radio"
                 value={2}
                 name="rating-2"
-                className="mask mask-star-2 bg-blue-600"
+                className="mask mask-star-2 bg-primary"
                 defaultChecked
               />
               <input
                 type="radio"
                 value={3}
                 name="rating-2"
-                className="mask mask-star-2 bg-blue-600"
+                className="mask mask-star-2 bg-primary"
               />
               <input
                 type="radio"
                 value={4}
                 name="rating-2"
-                className="mask mask-star-2 bg-blue-600"
+                className="mask mask-star-2 bg-primary"
               />
               <input
                 type="radio"
                 value={5}
                 name="rating-2"
-                className="mask mask-star-2 bg-blue-600"
+                className="mask mask-star-2 bg-primary"
               />
             </div>
             <p className={`${rating ? "hidden" : "text-red-500 text-sm"}`}>
               Please select rating
             </p>
             <input
-              className="btn rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white mt-6"
+              className="btn rounded-lg btn-primary text-white mt-6"
               type="submit"
               value="Submit Review"
             />

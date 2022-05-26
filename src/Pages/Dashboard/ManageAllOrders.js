@@ -26,7 +26,7 @@ const ManageAllOrders = () => {
       <h3 className="text-2xl my-3">Manage All Orders</h3>
       <div>
         <div className="overflow-x-auto w-full">
-          <table className="table table-compact w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>#</th>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/cyclex-tools.png";
+import logo1 from "../assets/images/cyclex-tools-1.png";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
 import { useQuery } from "react-query";
@@ -9,23 +10,10 @@ import Loading from "./Loading";
 
 const Navbar = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
-  // console.log(user);
-  const [currentUser, setCurrentUser] = useState({});
 
   if (loading) {
     return <Loading />;
   }
-
-  // const { data, isLoading, refetch } = useQuery("user", () =>
-  //   fetch(`http://localhost:5000/user?email=${user.email}`, {
-  //     method: "GET",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setCurrentUser(data[0]);
-  //       console.log(data[0]);
-  //     })
-  // );
 
   return (
     <div className="sticky top-0 z-50">
@@ -56,9 +44,12 @@ const Navbar = ({ children }) => {
                   </label>
                 </div>
 
-                <div className="flex-1 justify-center lg:justify-start">
-                  <Link to="/" className="normal-case">
-                    <img className="w-56 h-auto" src={logo} alt="" />
+                <div className="flex-1  justify-center lg:justify-start">
+                  <Link to="/" className="normal-case flex items-center">
+                    <img className="w-16 md:w-20 h-auto" src={logo1} alt="" />
+                    <span className="text-3xl lg:text-4xl font-semibold italic ml-2 pb-2 text-primary">
+                      Cyclex Tools
+                    </span>
                   </Link>
                 </div>
 
@@ -86,19 +77,25 @@ const Navbar = ({ children }) => {
                 <div className="flex-none hidden lg:block">
                   <ul className="menu menu-horizontal">
                     <li>
-                      <Link to="/" className="font-medium rounded-md">
+                      <Link
+                        to="/"
+                        className="font-medium rounded-md text-primary text-lg"
+                      >
                         Home
                       </Link>
                     </li>
                     <li>
-                      <Link to="/blogs" className="font-medium rounded-md">
+                      <Link
+                        to="/blogs"
+                        className="font-medium rounded-md text-primary text-lg"
+                      >
                         Blogs
                       </Link>
                     </li>
                     <li>
                       <Link
                         to="/myPortfolio"
-                        className="font-medium rounded-md"
+                        className="font-medium rounded-md text-primary text-lg"
                       >
                         My Portfolio
                       </Link>
@@ -107,7 +104,7 @@ const Navbar = ({ children }) => {
                       <li>
                         <Link
                           to="/dashboard"
-                          className="font-medium rounded-md mr-1"
+                          className="font-medium rounded-md text-primary text-lg mr-1"
                         >
                           Dashboard
                         </Link>
@@ -115,7 +112,7 @@ const Navbar = ({ children }) => {
                     )}
                     {user && (
                       <li>
-                        <p className="underline bg-slate-50 rounded-md mr-1">
+                        <p className="underline bg-slate-50 rounded-md mr-1 text-primary">
                           {user.displayName}
                         </p>
                       </li>
@@ -129,7 +126,7 @@ const Navbar = ({ children }) => {
                           }}
                           className={`${
                             user ? "block" : ""
-                          } btn btn-active rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white`}
+                          } btn rounded-lg btn-primary text-white`}
                         >
                           Sign Out
                         </button>
@@ -143,7 +140,7 @@ const Navbar = ({ children }) => {
                       <li>
                         <Link
                           to="/login"
-                          className="btn rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                          className="btn rounded-lg btn-primary text-white"
                         >
                           Login
                         </Link>
@@ -158,24 +155,36 @@ const Navbar = ({ children }) => {
               <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
               <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
                 <li>
-                  <Link to="/" className="font-medium rounded-md">
+                  <Link
+                    to="/"
+                    className="font-medium rounded-md text-primary text-md"
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blogs" className="font-medium rounded-md">
+                  <Link
+                    to="/blogs"
+                    className="font-medium rounded-md text-primary text-md"
+                  >
                     Blogs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/myPortfolio" className="font-medium rounded-md">
+                  <Link
+                    to="/myPortfolio"
+                    className="font-medium rounded-md text-primary text-md"
+                  >
                     My Portfolio
                   </Link>
                 </li>
 
                 {user && (
                   <li>
-                    <Link to="/dashboard" className="font-medium rounded-md">
+                    <Link
+                      to="/dashboard"
+                      className="font-medium rounded-md text-primary text-md"
+                    >
                       Dashboard
                     </Link>
                   </li>
@@ -183,7 +192,9 @@ const Navbar = ({ children }) => {
 
                 {user && (
                   <li>
-                    <p className="underline mr-1">{user.displayName}</p>
+                    <p className="underline text-primary mr-1">
+                      {user.displayName}
+                    </p>
                   </li>
                 )}
 
@@ -193,7 +204,7 @@ const Navbar = ({ children }) => {
                       onClick={() => {
                         signOut(auth);
                       }}
-                      className="btn w-36 bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                      className="btn w-fit btn-primary text-white"
                     >
                       Sign Out
                     </button>
@@ -205,7 +216,7 @@ const Navbar = ({ children }) => {
                   <li>
                     <Link
                       to="/login"
-                      className="btn w-36 bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                      className="btn w-fit btn-primary text-white"
                     >
                       Login
                     </Link>

@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import Loading from "../../Components/Loading";
 import Navbar from "../../Components/Navbar";
 import auth from "../../firebase.init";
-import useAdmin from "../Authentication/RequireAdmin";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -28,7 +28,7 @@ const Dashboard = () => {
               <h2 className="text-3xl mb-2">Dashboard</h2>
               <p className="border-b-2 border-gray-300 pb-2">
                 {admin ? "Admin" : "User"}
-                <span className="font-semibold text-blue-700">
+                <span className="font-semibold text-primary">
                   : {user.email}
                 </span>
               </p>
@@ -39,7 +39,7 @@ const Dashboard = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-            <ul className="menu overflow-y-auto bg-base-100 w-fit font-medium  text-base-content px-4 my-0 py-3">
+            <ul className="menu overflow-y-auto bg-base-100 w-fit font-medium  text-base-content px-4 my-0 py-5 lg:py-6">
               <li className="border-2 border-gray-300 rounded-md mb-2">
                 <Link
                   to="/dashboard/myProfile"
@@ -70,7 +70,7 @@ const Dashboard = () => {
                 </>
               )}
 
-              {admin && (
+              {user && admin && (
                 <>
                   <li className="border-2 border-gray-300 rounded-md mb-2">
                     <Link

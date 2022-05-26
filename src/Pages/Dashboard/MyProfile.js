@@ -52,7 +52,7 @@ const MyProfile = () => {
         <h2 className="text-2xl my-3">My Profile</h2>
         <button
           onClick={() => setEditable(!editable)}
-          className="btn btn-sm btn-primary gap-2"
+          className="btn btn-sm md:btn-md btn-primary gap-2"
         >
           <FontAwesomeIcon icon={faEdit} />
           Edit Profile
@@ -62,13 +62,13 @@ const MyProfile = () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
           <div className="w-full h-full bg-slate-50 rounded-xl shadow-md px-4 py-10 lg:py-12 border text-center">
             <div className="avatar mb-6">
-              <div className="w-32 lg:w-24 mx-auto rounded-full ring ring-blue-600 ring-offset-2">
+              <div className="w-32 lg:w-24 mx-auto rounded-full ring ring-primary ring-offset-2">
                 <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" />
                 {/* <img src="https://api.lorem.space/image/face?hash=3178" /> */}
               </div>
             </div>
 
-            <h3 className="text-lg mb-4">{name}</h3>
+            <h3 className="text-lg mb-4">{user.displayName}</h3>
 
             <p className="mb-3 flex justify-center items-center gap-3">
               <FontAwesomeIcon
@@ -86,25 +86,25 @@ const MyProfile = () => {
             <div className="flex-row mt-6">
               <a target="_blank" href="https://www.facebook.com/">
                 <FontAwesomeIcon
-                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  className="footer-icon text-3xl text-primary mx-2"
                   icon={faFacebook}
                 />
               </a>
               <a target="_blank" href="https://instagram.com/">
                 <FontAwesomeIcon
-                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  className="footer-icon text-3xl text-primary mx-2"
                   icon={faLinkedin}
                 />
               </a>
               <a target="_blank" href="https://twitter.com/">
                 <FontAwesomeIcon
-                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  className="footer-icon text-3xl text-primary mx-2"
                   icon={faTwitter}
                 />
               </a>
               <a target="_blank" href="https://github.com/">
                 <FontAwesomeIcon
-                  className="footer-icon text-3xl text-blue-600 mx-2"
+                  className="footer-icon text-3xl text-primary mx-2"
                   icon={faGithub}
                 />
               </a>
@@ -203,7 +203,7 @@ const MyProfile = () => {
                 </div>
                 <input
                   disabled={!editable}
-                  className="btn w-full mt-6 rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+                  className="btn w-full mt-6 rounded-lg btn-primary text-white"
                   type="submit"
                   value="Update Profile"
                 />

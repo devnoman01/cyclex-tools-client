@@ -52,7 +52,10 @@ const ProductRow = ({ product, index, refetch }) => {
       <td>{minimumOrderQty}</td>
       <td>{availableQty}</td>
       <td>
-        <button onClick={handleDeleteProduct} className="btn btn-sm btn-error">
+        <button
+          onClick={handleDeleteProduct}
+          className="btn btn-sm bg-error hover:bg-error"
+        >
           <FontAwesomeIcon className="footer-icon mr-2" icon={faTrashCan} />
           Delete
         </button>

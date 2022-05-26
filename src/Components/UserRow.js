@@ -65,7 +65,7 @@ const UserRow = ({ user, index, refetch }) => {
         ) : (
           <button
             onClick={handleMakeAdmin}
-            className="btn btn-sm btn-accent text-white"
+            className="btn btn-sm btn-secondary text-white"
           >
             Make Admin
           </button>

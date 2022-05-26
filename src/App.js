@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Login from "./Pages/Authentication/Login";
 import Register from "./Pages/Authentication/Register";
+import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Blogs from "./Pages/Blogs/Blogs";
 import AddProduct from "./Pages/Dashboard/AddProduct";
@@ -52,10 +53,39 @@ function App() {
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
             <Route path="myProfile" element={<MyProfile />} />
-            <Route path="manageProducts" element={<ManageProducts />} />
-            <Route path="manageAllOrders" element={<ManageAllOrders />} />
-            <Route path="addProduct" element={<AddProduct />} />
-            <Route path="makeAdmin" element={<MakeAdmin />} />
+
+            <Route
+              path="manageProducts"
+              element={
+                <RequireAdmin>
+                  <ManageProducts />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="manageAllOrders"
+              element={
+                <RequireAdmin>
+                  <ManageAllOrders />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="addProduct"
+              element={
+                <RequireAdmin>
+                  <AddProduct />
+                </RequireAdmin>
+              }
+            />
+            <Route
+              path="makeAdmin"
+              element={
+                <RequireAdmin>
+                  <MakeAdmin />
+                </RequireAdmin>
+              }
+            />
           </Route>
         </Routes>
       </Navbar>

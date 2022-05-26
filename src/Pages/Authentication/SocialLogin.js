@@ -48,7 +48,7 @@ const SocialLogin = () => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       {errorElement}
       <div>
         {/* google login button with function */}

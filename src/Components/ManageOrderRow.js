@@ -89,7 +89,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
         ) : (
           <button
             onClick={handleCancelOrder}
-            className="btn btn-xs border-red-600 bg-red-200 text-black"
+            className="btn btn-xs btn-warning"
           >
             <FontAwesomeIcon className="footer-icon mr-1" icon={faXmark} />
             Cancel
@@ -102,9 +102,9 @@ const ManageOrderRow = ({ order, index, refetch }) => {
         ) : (
           <button
             onClick={handleShipNow}
-            className="btn btn-xs bg-green-200 border-green-700 font-medium"
+            className="btn btn-xs btn-success text-white font-medium"
           >
-            Ship
+            Deliver
           </button>
         )}
       </td>

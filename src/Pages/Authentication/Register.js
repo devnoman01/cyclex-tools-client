@@ -32,43 +32,6 @@ const Register = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-
-    // const user = {
-    //   displayName: data.name,
-    //   email: data.email,
-    //   phoneNumber: null,
-    //   photoURL:
-    //     "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg",
-    //   education: "",
-    //   linkedin: "",
-    //   address: "",
-    // };
-
-    // fetch("http://localhost:5000/user", {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(user),
-    // })
-    //   .then((res) => res.json())
-    //   .then((inserted) => {
-    //     if (inserted.insertedId) {
-    //       console.log(inserted);
-    //       Swal.fire({
-    //         title: "User Registered",
-    //         html: "Account registration successful",
-    //         icon: "success",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#218838",
-    //         cancelButtonColor: "#C82333",
-    //         confirmButtonText: "Update Profile!",
-    //       }).then((result) => {
-    //         if (result.isConfirmed) {
-    //           reset();
-    //           navigate("/dashboard/myProfile");
-    //         }
-    //       });
-    //     }
-    //   });
   };
 
   const [token] = useToken(user);
@@ -116,7 +79,7 @@ const Register = () => {
     <>
       <div className="max-w-6xl mx-auto w-full">
         <div className="container mx-auto px-4">
-          <div className="mt-16 md:mt-24 ">
+          <div className="mt-8 mb-10 md:mt-20">
             <div className="p-8 border w-full max-w-sm border-gray-200 shadow-lg rounded-2xl mx-auto">
               <h2 className="text-2xl font-medium text-center mb-4">Sign Up</h2>
               <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -205,10 +168,10 @@ const Register = () => {
                 <input
                   value="Sign Up"
                   type="submit"
-                  className="input input-bordered w-full bg-accent text-white uppercase font-medium"
+                  className="input input-bordered w-full bg-primary text-white uppercase font-medium cursor-pointer"
                 />
               </form>
-              <p className="text-sm text-center mt-1">
+              <p className="text-sm text-center mt-3">
                 Already Registered?{" "}
                 <Link to="/login" className="text-secondary font-medium">
                   Login Here

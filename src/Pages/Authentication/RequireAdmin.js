@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Navigate, useLocation } from "react-router-dom";
 
-const useAdmin = (user) => {
-  const [admin, setAdmin] = useState(false);
-  const [adminLoading, setAdminLoading] = useState(true);
+import { signOut } from "firebase/auth";
+import Loading from "../../Components/Loading";
+import useAdmin from "../../Hooks/useAdmin";
+import auth from "../../firebase.init";
 
-  useEffect(() => {
-    const email = user?.email;
+const RequireAdmin = ({ children }) => {
+  const [user, loading] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
 
-    if (email) {
-      fetch(`http://localhost:5000/admin/${email}`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setAdmin(data.admin);
-          setAdminLoading(false);
-        });
-    }
-  }, [user]);
-  return [admin, adminLoading];
+  let location = useLocation();
+
+  if (loading || adminLoading) {
+    return <Loading />;
+  }
+
+  if (!user || !admin) {
+    signOut(auth);
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  return children;
 };
 
-export default useAdmin;
+export default RequireAdmin;

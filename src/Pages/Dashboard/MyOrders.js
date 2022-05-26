@@ -30,7 +30,7 @@ const MyOrders = () => {
       <h3 className="text-2xl my-3">My Orders</h3>
       <div>
         <div className="overflow-x-auto">
-          <table className="table table-compact w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>#</th>
@@ -39,7 +39,7 @@ const MyOrders = () => {
                 <th>Quantity</th>
                 <th>Bill Amount</th>
                 <th>Payment</th>
-                <th>Cancel Order</th>
+                <th className="pr-8">Cancel Order</th>
               </tr>
             </thead>
             <tbody>

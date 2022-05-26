@@ -21,6 +21,7 @@ const Login = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -28,7 +29,10 @@ const Login = () => {
 
   let loginError;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (user) {
+    }
+  }, []);
 
   if (loading) {
     return <Loading />;
@@ -51,14 +55,12 @@ const Login = () => {
 
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
-    if (user) {
-    }
   };
 
   return (
     <div className="max-w-6xl w-full mx-auto">
       <div className="container flex justify-center mx-auto px-4">
-        <div className="card mx-auto mt-16 md:mt-24 w-full md:max-w-sm bg-base-100 border border-gray-200 shadow-lg">
+        <div className="card mx-auto mt-8 mb-10 md:mt-20 w-full md:max-w-sm bg-base-100 border border-gray-300 shadow-lg">
           <div className="card-body items-center text-center">
             <h2 className="text-2xl font-medium mb-4">Login</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -126,7 +128,7 @@ const Login = () => {
               <input
                 value="Login"
                 type="submit"
-                className="input input-bordered w-full bg-accent text-white uppercase font-medium"
+                className="input input-bordered w-full bg-primary text-white uppercase font-medium cursor-pointer"
               />
             </form>
             <p className="text-sm text-left mt-1 mb-0">

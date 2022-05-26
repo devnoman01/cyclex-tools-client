@@ -48,7 +48,7 @@ const OrderRow = ({ order, index, refetch }) => {
         {isPaid ? (
           <p className="text-md font-semibold text-green-700">Paid</p>
         ) : (
-          <button className="btn btn-xs font-medium border-2 border-green-600 bg-green-200 text-black">
+          <button className="btn btn-sm font-medium bg-green-600 text-white hover:bg-green-600 hover:text-white">
             Pay Now
           </button>
         )}
@@ -59,7 +59,7 @@ const OrderRow = ({ order, index, refetch }) => {
         ) : (
           <button
             onClick={handleCancelOrder}
-            className="btn btn-xs border-2 border-red-600 bg-red-200 text-black"
+            className="btn btn-sm btn-warning"
           >
             <FontAwesomeIcon className="footer-icon mr-1" icon={faXmark} />
             Cancel

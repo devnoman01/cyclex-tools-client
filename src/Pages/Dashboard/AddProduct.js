@@ -128,7 +128,7 @@ const AddProduct = () => {
             />
           </div>
           <input
-            className="btn w-full mt-6 rounded-lg bg-gradient-to-r from-[#4485FA] to-[#53DAFF] text-white"
+            className="btn btn-primary w-full mt-6 rounded-lg text-white"
             type="submit"
             value="Update Profile"
           />
