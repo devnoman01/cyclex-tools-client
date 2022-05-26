@@ -1,58 +1,66 @@
 [
     {
-        "name": "OIL FILTER",
-        "img": "https://i.ibb.co/pQr9kZ2/oil-filter.jpg",
-        "description": "Genuine factory made Oil Filter for production and replacement use designed to remove contaminants from oil based fuel such as diesel and petrol.",
+        "name": "Crankset V1",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/283247.webp",
+        "description": "Crankset converts the power you put into your Ultegra 1x11-speed road bike into propulsion with high efficiency. It meets all your requirements for stiffness and stability.",
         "minimumOrderQty": 30,
-        "availableQty": 500,
+        "availableQty": 600,
         "price": 50
     },
     {
-        "name": "AIR FILTER",
-        "img": "https://i.ibb.co/Pjc15Nz/air-filter.jpg",
-        "description": "Genuine factory made Air Filter for production and replacement use designed to remove contaminants from intake air and keep your engine safe.",
+        "name": "Crankset V2",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/428874.webp",
+        "description": "crankset converts the power you put into your Ultegra 2x12-speed road bike groupset into propulsion with high efficiency. It meets all your requirements for stiffness and stability.",
         "minimumOrderQty": 30,
         "availableQty": 600,
+        "price": 50
+    },
+    {
+        "name": "Rear Derailleur 11-speed",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/298370.webp",
+        "description": "Rear derailleur impresses with a super powerful servo motor and shifting at the touch of a button, which is highly accurate even under extreme load or in difficult conditions.",
+        "minimumOrderQty": 25,
+        "availableQty": 500,
         "price": 120
     },
     {
-        "name": "BATTERY",
-        "img": "https://i.ibb.co/jyCbMcq/battery.jpg",
-        "description": "A battery is the most essential part of a car. Our factory made batteries are long lasting and used for production and replacement.",
+        "name": "Cassette 11-speed",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/160993.webp",
+        "description": "This 11-speed cassette ensures smooth but reliable gear changes when downshifting and upshifting thanks to HG-EV technology. Eevery rider will find the right gradation.",
         "minimumOrderQty": 20,
-        "availableQty": 700,
-        "price": 500
+        "availableQty": 400,
+        "price": 220
     },
     {
-        "name": "BRAKE SHOE",
-        "img": "https://i.ibb.co/P9RCVDX/brake-shoe.jpg",
-        "description": "Our genuine factory made brake shoe is one of the best selling product in automobile industry according to sellers. As a seller you can it too.",
-        "minimumOrderQty": 30,
-        "availableQty": 800,
-        "price": 250
+        "name": "Cranks",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/234268.webp",
+        "description": "This crank is characterised by durability, stiffness and its low weight. It can be ridden as FC-M8000-1 with a single chainring (not included). Two chainrings can also be installed",
+        "minimumOrderQty": 16,
+        "availableQty": 400,
+        "price": 80
     },
     {
-        "name": "BREAK PAD",
-        "img": "https://i.ibb.co/rw5T8c8/breakpad.jpg",
-        "description": "Our genuine factory made brake pads is one of the best selling product in automobile industry according to sellers. As a seller you can it too.",
+        "name": "Front Derailleur 2-/11 Speed",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/298403.webp",
+        "description": "This front derailleur is an electronic front derailleur for two chainrings that shifts smoothly and quickly even under high loads. Thanks to materials such as carbon, titanium and aluminium. Thats why it is very lightweight.",
         "minimumOrderQty": 30,
         "availableQty": 900,
         "price": 150
     },
     {
-        "name": "CAR TYRE",
-        "img": "https://i.ibb.co/QHpccQH/car-tyre.jpg",
-        "description": "Offers a new a reference for safety. After three years of development, this tyre provides a high level of performance on wet roads, from the first use until worn to the legal wear indicator (1.6mm).",
+        "name": "Mountain Bike Frameset V1",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/409089.webp",
+        "description": "The RAAW Mountain Bikes Madonna V2.2 frame shines with thoughtful details that focus on robustness and durability for enduro use. Everyone can enjoy the same level of riding fun.",
         "minimumOrderQty": 16,
         "availableQty": 300,
-        "price": 700
+        "price": 400
     },
     {
-        "name": "SUV TYRE",
-        "img": "https://i.ibb.co/KrMwpLW/suv-tyre.jpg",
-        "description": "Offers a new a reference for safety. After three years of development, this tyre provides a high level of performance on wet roads, from the first use until worn to the legal wear indicator (1.6mm).",
-        "minimumOrderQty": 16,
-        "availableQty": 300,
-        "price": 700
+        "name": "Mountain Bike Frameset V2",
+        "img": "https://www.bike-components.de/assets/p/i/1280x960/409118.webp",
+        "description": "The RAAW Mountain Bikes Madonna V2.2 frame shines with thoughtful details that focus on robustness and durability for enduro use. Everyone can enjoy the same level of riding fun.",
+        "minimumOrderQty": 26,
+        "availableQty": 400,
+        "price": 400
     }
 ]
