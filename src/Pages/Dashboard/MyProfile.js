@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { faEnvelope, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,30 +23,34 @@ const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
 
-  const { data, isLoading, refetch } = useQuery(["user", user], () =>
-    fetch(`http://localhost:5000/user?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentUser(data[0]);
+  // const { data, isLoading, refetch } = useQuery(["user", user], () =>
+
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/user?email=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
       })
-  );
+        .then((res) => res.json())
+        .then((data) => {
+          setCurrentUser(data[0]);
+        });
+    }
+  }, [user]);
 
   if (loading) {
     return <Loading />;
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
   const email = currentUser.email;
   let img;
-  if (user.img) {
-    img = user.img;
+  if (currentUser?.img) {
+    img = currentUser.img;
   } else {
     img =
       "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
@@ -71,9 +75,10 @@ const MyProfile = () => {
       number,
     };
 
-    fetch(`http://localhost:5000/user?email=${user.email}`, {
+    fetch(`http://localhost:5000/user/${currentUser._id}`, {
       method: "PATCH",
       headers: {
+        "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(user),
@@ -87,6 +92,7 @@ const MyProfile = () => {
         return res.json();
       })
       .then((data) => {
+        // refetch();
         Swal.fire({
           title: "User Info Updated",
           html: "You updated your information",
@@ -94,9 +100,13 @@ const MyProfile = () => {
           showConfirmButton: false,
         });
         setEditable(!editable);
-        console.log(data);
-        refetch();
+        // refetch();
       });
+  };
+
+  const handleEditEnable = (e) => {
+    setEditable(!editable);
+    // refetch();
   };
 
   return (
@@ -104,8 +114,8 @@ const MyProfile = () => {
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-2xl my-3">My Profile</h2>
         <button
-          onClick={() => setEditable(!editable)}
-          className="btn btn-sm md:btn-md btn-primary gap-2"
+          onClick={() => handleEditEnable()}
+          className="btn btn-sm md:btn-md btn-success gap-2"
         >
           <FontAwesomeIcon icon={faEdit} />
           Edit Profile
@@ -121,7 +131,9 @@ const MyProfile = () => {
               </div>
             </div>
 
-            <h3 className="text-lg mb-4">{user.displayName}</h3>
+            <h3 className="text-lg mb-4">
+              {currentUser ? currentUser?.name : user.displayName}
+            </h3>
 
             <p className="mb-3 flex justify-center items-center gap-3">
               <FontAwesomeIcon
@@ -132,8 +144,6 @@ const MyProfile = () => {
               {email}
             </p>
 
-            <p className="mb-3">My Company</p>
-
             <p className="text-sm">Shop-11, Road-1, New Market, Dhaka</p>
 
             <div className="flex-row mt-6">
@@ -143,7 +153,14 @@ const MyProfile = () => {
                   icon={faFacebook}
                 />
               </a>
-              <a target="_blank" href="https://linkedin.com/">
+              <a
+                target="_blank"
+                href={
+                  currentUser.linkedin
+                    ? currentUser.linkedin
+                    : "https://linkedin.com/"
+                }
+              >
                 <FontAwesomeIcon
                   className="footer-icon text-3xl text-primary mx-2"
                   icon={faLinkedin}
